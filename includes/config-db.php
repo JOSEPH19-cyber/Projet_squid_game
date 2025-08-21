@@ -1,7 +1,7 @@
 
 <?php
 
-$DB_DSN = 'mysql:host=localhost;dbname=squid_game';
+$DB_DSN = 'mysql:host=localhost;dbname=squid_game;charset=utf8mb4';
 $DB_USER = 'root';
 $DB_PASS = '';
 
