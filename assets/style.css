@@ -1,0 +1,82 @@
+/* Définition des couleurs */
+:root {
+    --color-primary: #FF0F64; 
+    --color-secondary: #3B0A45;
+    --color-bg-light: #F7F7F7;
+    --color-text-main: #121212;
+    --color-text-secondary: #5F5F5F; 
+    --color-special: #FFC107;
+}
+
+/* Rénitialisation du style par défaut */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, .slogan, .logo p {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+
+
+
+/* LE STYLE DE MON HEADER */
+header{
+    background-image: url("../assets/images/parc2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    margin-bottom: 100px;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 6rem;
+}
+
+.logo{
+ font-size: 3rem;
+ color: var(--color-primary);
+}
+
+.navbar ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    border: 1px solid black;
+}
+
+.navbar ul a{
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+}
+
+.header-icons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid black;
+}
+
+.header-icons,
+.hamburger i{
+    font-size: 1.5rem;
+}
+
+.hamburger{
+
+}

@@ -33,7 +33,7 @@ if(isset($_POST['submit'])) {
                 $_SESSION['rank']      = $user['is_admin']; 
 
                 // Redirection vers la page d'accueil
-                header("Location: ../squid_game/accueil.php");
+                header("Location: ../squid_game/index.php");
                 exit;
 
             } else {

@@ -35,17 +35,21 @@ $delices = $request->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accueil</title>
+    <link rel="stylesheet" href="../assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
+    <!-- Inclure le header -->
    <?php require_once "../includes/header.php"?>
 
    <main>
-    <section class="activities">
+    <section class="activites">
         <h1>Découvrez nos activités</h1>
 
         <button class="carousel-btn prev">←</button>
@@ -95,6 +99,35 @@ $delices = $request->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
 
+    <section class="reservation">
+        <h1>Réservez vos activités en ligne !</h1>
+
+        <p>Gagnez du temps; réservez vos jeux préférés dès maintenant !</p>
+
+        <p><a href="reservation.php">Réservez maintenant</a></p>
+
+    </section>
+
+    <section class="apropos">
+        <h1>À propos du Parc SQUID GAME</h1>
+
+        <p>
+            Bienvenue au Parc SQUID GAME, un espace unique dédié au divertissement et à 
+            l’aventure ! Inspiré de l’univers des jeux populaires, notre parc propose une 
+            expérience immersive où petits et grands peuvent relever des défis amusants, 
+            sportifs et stratégiques. Ici, chaque activité est conçue pour mêler adrénaline, 
+            réflexion et esprit d’équipe, dans une ambiance sécurisée et conviviale. Que vous 
+            soyez en famille, entre amis ou en groupe scolaire, vous trouverez des attractions 
+            adaptées à tous les âges et tous les niveaux. En plus des jeux, profitez de nos espaces 
+            de restauration et de détente pour savourer des plats variés et recharger vos batteries. 
+            Notre objectif est simple : vous offrir des souvenirs inoubliables et une expérience de 
+            loisirs hors du commun. Osez relever le défi et plongez dans l’aventure SQUID GAME !
+        </p>
+    </section>
+
    </main>
+
+   <!-- Inclure le footer -->
+   <?php require_once "../includes/footer.php"?>
 </body>
 </html>
