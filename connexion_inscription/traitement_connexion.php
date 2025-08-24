@@ -30,7 +30,8 @@ if(isset($_POST['submit'])) {
                 // Stocker les infos dans la session
                 $_SESSION['user_id']   = $user['user_id'];
                 $_SESSION['user_name'] = $user['user_name'];
-                $_SESSION['rank']      = $user['is_admin']; 
+                $_SESSION['rank']      = $user['is_admin'];
+                $_SESSION['user_email'] = $user_email['user_email'];
 
                 // Redirection vers la page d'accueil
                 header("Location: ../squid_game/index.php");

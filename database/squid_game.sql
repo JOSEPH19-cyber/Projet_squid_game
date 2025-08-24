@@ -53,6 +53,21 @@ ENGINE = InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
+/* CREER LA TABLE reservations */
+CREATE TABLE `reservations`
+(
+    `reservation_id` INT NOT NULL AUTO_INCREMENT,
+    `full_name` VARCHAR(150) NOT NULL,
+    `phone_number` VARCHAR(50) NOT NULL,
+    `activity_choice` VARCHAR(100) NOT NULL,
+    `number` TINYINT NOT NULL,
+    PRIMARY KEY(`reservation_id`)
+)
+ENGINE = InnoDB
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+
 
 /* ENREGISTREMENTS DE DONNEES*/
 INSERT INTO `activities`(activity_title, short_description, long_description, activity_url)
@@ -316,3 +331,7 @@ VALUES
 /* INDEX */
 ALTER TABLE `activities`
 ADD COLUMN `category` TINYINT(1) NOT NULL DEFAULT 1;
+
+ALTER TABLE `reservations`
+ADD COLUMN `reservation_date` DATE NOT NULL,
+ADD COLUMN `reservation_time` TIME NOT NULL;

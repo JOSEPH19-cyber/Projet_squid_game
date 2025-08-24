@@ -13,6 +13,7 @@ if(is_logged())
 {
     $user_name = $_SESSION['user_name'];
     $user_id = $_SESSION['user_id'];
+    $user_email =  $_SESSION['user_email'];
 }
 
 //préparer et executer la requête pour les activités
