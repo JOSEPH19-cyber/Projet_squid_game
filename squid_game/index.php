@@ -125,6 +125,7 @@ $delices = $delight->fetchAll(PDO::FETCH_ASSOC);
             de restauration et de détente pour savourer des plats variés et recharger vos batteries. 
             Notre objectif est simple : vous offrir des souvenirs inoubliables et une expérience de 
             loisirs hors du commun. Osez relever le défi et plongez dans l’aventure SQUID GAME !
+            Le parc est ouvert de 8h à 18h
         </p>
     </section>
 
