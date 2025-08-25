@@ -1,4 +1,8 @@
 <?php
+// Gestion de l'affichage des erreurs  
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Inclure la BDD
 require_once "../includes/config-db.php";
 
@@ -11,28 +15,42 @@ init_session();
 // Récupérer les infos si l'utilisateur est connecté
 if(is_logged())
 {
-    $user_name  = $_SESSION['user_name'];
-    $user_id    = $_SESSION['user_id'];
-    $user_email = $_SESSION['user_email'];
+    $user_name  = $_SESSION['user_name'] ?? null;
+    $user_id    = $_SESSION['user_id'] ?? null;
+    $user_email = $_SESSION['user_email'] ?? null;
 }
+else{
+    echo "<script>
+            alerte('Vous n'êtes pas connecté. veuillez vous connecté pour passer une réservation.');
+            window.location.href = 'connexion.php';
+          </script>";
+}
+
+//préparer et executer la requête pour les activités
+$sql = $pdo->prepare("SELECT activity_title FROM activities");
+$sql->execute();
+
+//Récupérer les données des activités
+$games = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 // Vérification de la soumission du formulaire
 if(isset($_POST['submit']))
 {
     // Récupérer et nettoyer les données
-    $full_name       = trim($_POST['full_name']);
-    $phone_number    = trim($_POST['telephone']);
-    $activity_choice = trim($_POST['activities'] ?? '');
-    $number          = trim($_POST['number']);
-    $date            = trim($_POST['date']);
-    $time            = trim($_POST['time']);
+    $full_name       = trim($_POST['full_name'] ?? null);
+    $phone_number    = trim($_POST['telephone'] ?? null);
+    $activity_choice = trim($_POST['activities'] ?? null);
+    $number          = trim($_POST['number'] ?? null);
+    $date            = trim($_POST['date'] ?? null);
+    $time            = trim($_POST['time'] ?? null);
 
     // Vérifier que les champs ne sont pas vides
     if(!empty($full_name) && !empty($phone_number) && !empty($activity_choice) && !empty($number) && !empty($date) && !empty($time))
     {
         // Vérifier que l'activité existe
-        $traitement = $pdo->prepare('SELECT * FROM activities WHERE activity_title = :activities');
-        $traitement->execute(['activities' => $activity_choice]);
+        $traitement = $pdo->prepare("SELECT * FROM activities WHERE activity_title = :activities");
+        $traitement->bindParam(":activities", $activity_choice);
+        $traitement->execute();
         $activity = $traitement->fetch();
 
         if($activity)
@@ -56,7 +74,7 @@ if(isset($_POST['submit']))
         }
         else
         {
-            echo "<script>alert('Cette activité n’existe pas.');</script>";
+            echo "<script>alert('Activité non trouvé.');</script>";
         }
     }
     else
@@ -64,11 +82,7 @@ if(isset($_POST['submit']))
         echo "<script>alert('Veuillez remplir tous les champs.');</script>";
     }
 }
-/*else
-{
-    // Accès direct au fichier interdit
-    echo "<script>alert('Accès interdit.'); window.location.href='reservation.php';</script>";
-}*/
+
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +111,7 @@ if(isset($_POST['submit']))
             <input type="text" id="full_name" name="full_name" placeholder="Entrez votre nom et votre prénom" required><br>
 
             <label for="email">Addresse email : </label><br>
-            <input type="email" id="email" name="email" placeholder="Entrez votre addresse e-mail" value="<?= htmlspecialchars($user_email ?? '') ?>" readonly required><br>
+            <input type="email" id="email" name="email" placeholder="Entrez votre addresse e-mail" value="<?= htmlspecialchars($user_email)?>" readonly required><br>
 
             <label for="telephone">Numéro de téléphone : </label><br>
             <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" required><br>
@@ -108,10 +122,11 @@ if(isset($_POST['submit']))
             <label for="time">Heure de réservation : </label><br>
             <input type="time" id="time" name="time" required><br>
 
-            Choisissez une activité : <br>
             <select name="activities" id="activities">
+                
                 <optgroup label="activités">
-                    <?php foreach($activity as $game) : ?>
+                    <option value="choisir">Choisissez une activité</option>
+                    <?php foreach($games as $game) : ?>
                         <option value="<?= htmlspecialchars($game['activity_title'])?>">
                             <?= htmlspecialchars($game['activity_title'])?>
                         </option>

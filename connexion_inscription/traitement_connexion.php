@@ -1,4 +1,8 @@
 <?php
+// Gestion de l'affichage des erreurs 
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Inclure les fonctions de session/utilitaires
 require_once "../includes/util.php";
 
@@ -20,7 +24,8 @@ if(isset($_POST['submit'])) {
 
         // Vérifier si l'email existe
         $query = $pdo->prepare("SELECT * FROM users WHERE user_email = :email");
-        $query->execute(['email' => $email]);
+        $query->bindParam(":email", $email);
+        $query->execute();
         $user = $query->fetch();
 
         if($user) {

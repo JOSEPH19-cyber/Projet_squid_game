@@ -1,4 +1,8 @@
 <?php
+// Gestion de l'affichage des erreurs 
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Vérifier si le formulaire a été soumis
 if(isset($_POST['submit'])){
 
@@ -19,7 +23,8 @@ if(isset($_POST['submit'])){
 
             // Vérifier si l’email existe déjà
             $emailCheckStmt = $pdo->prepare("SELECT user_id FROM users WHERE user_email = :email");
-            $emailCheckStmt->execute(['email' => $email]);
+            $emailCheckStmt->bindParam(":email", $email);
+            $emailCheckStmt->execute();
             $user = $emailCheckStmt->fetch();
 
             if($user) {

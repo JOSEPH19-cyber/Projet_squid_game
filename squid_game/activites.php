@@ -1,4 +1,8 @@
 <?php
+// Gestion de l'affichage des erreurs  
+error_reporting(0);
+ini_set('display_errors', 0);
+
 //Inclure la BDD
 require_once "../includes/config-db.php";
 
@@ -11,18 +15,17 @@ init_session();
 //Récupérer les infos si l'utilisateur est connecté
 if(is_logged())
 {
-    $user_name = $_SESSION['user_name'];
-    $user_id = $_SESSION['user_id'];
-    $user_email =  $_SESSION['user_email'];
+    $user_name = $_SESSION['user_name'] ?? null;
+    $user_id = $_SESSION['user_id'] ?? null;
+    $user_email =  $_SESSION['user_email'] ?? null;
 }
 
 //préparer et executer la requête pour les activités
-$sql = "SELECT activity_url, activity_title, long_description FROM activities";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
+$sql = $pdo->prepare("SELECT activity_url, activity_title, long_description FROM activities");
+$sql->execute();
 
 //Récupérer les données des activités
-$delices = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$sql = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
