@@ -1,7 +1,4 @@
 <?php
-// Gestion de l'affichage des erreurs 
-error_reporting(0);
-ini_set('display_errors', 0);
 
 // Vérifier si le formulaire a été soumis
 if(isset($_POST['submit'])){

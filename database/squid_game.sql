@@ -22,7 +22,7 @@ COLLATE utf8mb4_unicode_ci;
 
 
 /* CREER LA TABLE activities */
-CREATE TABLE `activities`
+CREATE TABLE `activitie
 (
     `activity_id` INT NOT NULL AUTO_INCREMENT,
     `activity_title` VARCHAR(150) NOT NULL,

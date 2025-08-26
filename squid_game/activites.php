@@ -1,7 +1,4 @@
 <?php
-// Gestion de l'affichage des erreurs  
-error_reporting(0);
-ini_set('display_errors', 0);
 
 //Inclure la BDD
 require_once "../includes/config-db.php";
@@ -25,7 +22,7 @@ $sql = $pdo->prepare("SELECT activity_url, activity_title, long_description FROM
 $sql->execute();
 
 //Récupérer les données des activités
-$sql = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$activities = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -45,12 +42,12 @@ $sql = $stmt->fetchAll(PDO::FETCH_ASSOC);
    <main>
     <main>
     <section class="activites">
-        <?php foreach($delices as $delice) : ?>
+        <?php foreach($activities as $activity) : ?>
             <article class="card">
-                <img src="../<?= htmlspecialchars($delice['activity_url'])?>" alt="activité">
+                <img src="../<?= htmlspecialchars($activity['activity_url'])?>" alt="activité">
                 <div class="card_description">
-                    <h1><?= htmlspecialchars($delice['activity_title'])?></h1>
-                    <p><?= htmlspecialchars($delice['long_description'])?></p>
+                    <h1><?= htmlspecialchars($activity['activity_title'])?></h1>
+                    <p><?= htmlspecialchars($activity['long_description'])?></p>
                     <a href="reservation.php"><button>Réservez</button></a>
                 </div>
             </article>

@@ -1,7 +1,5 @@
 <?php
-// Gestion de l'affichage des erreurs  
-error_reporting(0);
-ini_set('display_errors', 0);
+
 
 // Inclure la BDD
 require_once "../includes/config-db.php";
@@ -13,13 +11,11 @@ require_once "../includes/util.php";
 init_session();
 
 // Récupérer les infos si l'utilisateur est connecté
-if(is_logged())
-{
+if (is_logged()) {
     $user_name  = $_SESSION['user_name'] ?? null;
     $user_id    = $_SESSION['user_id'] ?? null;
     $user_email = $_SESSION['user_email'] ?? null;
-}
-else{
+} else {
     echo "<script>
             alerte('Vous n'êtes pas connecté. veuillez vous connecté pour passer une réservation.');
             window.location.href = 'connexion.php';
@@ -34,8 +30,7 @@ $sql->execute();
 $games = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 // Vérification de la soumission du formulaire
-if(isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
     // Récupérer et nettoyer les données
     $full_name       = trim($_POST['full_name'] ?? null);
     $phone_number    = trim($_POST['telephone'] ?? null);
@@ -45,29 +40,38 @@ if(isset($_POST['submit']))
     $time            = trim($_POST['time'] ?? null);
 
     // Vérifier que les champs ne sont pas vides
-    if(!empty($full_name) && !empty($phone_number) && !empty($activity_choice) && !empty($number) && !empty($date) && !empty($time))
-    {
+    if (!empty($full_name) && !empty($phone_number) && !empty($activity_choice) && !empty($number) && !empty($date) && !empty($time)) {
         // Vérifier que l'activité existe
         $traitement = $pdo->prepare("SELECT * FROM activities WHERE activity_title = :activities");
         $traitement->bindParam(":activities", $activity_choice);
         $traitement->execute();
         $activity = $traitement->fetch();
 
+        // s'assurer du timezone serveur
+        date_default_timezone_set('Africa/Kinshasa');
+
         //vérifier si la date entrée par l'utilisateur est valide
         $now = new DateTime();
-        $user_date = new DateTime($date);
+        $user_datetime = new DateTime($date . '' . $time);
 
-        //vérifier si l'heure entrée par l'utilisateur est valide
-        $heuremin = new DateTime("08:00");
-        $heuremax = new DateTime("18:00");
-        $user_time = new DateTime($time);
+        // Vérifier plage horaire (08:00 - 18:00)
+        $hours = (int)$userDateTime->format('H');
+        $minutes = (int)$userDateTime->format('i');
+        $userTotalMinutes = $hours * 60 + $minutes;
+        $minMinutes = 8 * 60;
+        $maxMinutes = 18 * 60;
 
-        if($activity && 
-            $user_date >= $now && 
-            $heuremin <= $user_time && 
-            $user_time <= $heuremax &&
-            $number > 0 &&
-            $number <= 20)
+        // caster number en entier de façon sûre
+        $number_raw = (int)$number;
+
+
+        if (
+            $activity &&
+            $user_datetime >= $now &&
+            $minMinutes <= $userTotalMinutes  &&
+            $userTotalMinutes  <= $maxMinutes &&
+            $number_raw > 0 &&
+            $number_raw <= 20)
         {
             // Insérer la réservation dans la BDD
             $stmt = $pdo->prepare("INSERT INTO reservations (full_name, phone_number, activity_choice, number, reservation_date, reservation_time) 
@@ -85,32 +89,25 @@ if(isset($_POST['submit']))
                     alert('Réservation réussie !');
                     window.location.href = 'reservations.php';
                   </script>";
-        }
-        else
+        } 
+        else 
         {
-            if(!$activity)
-            {
+            if (!$activity) {
                 echo "<script>alert('Activité non trouvé.');</script>";
-            }
-            elseif($user_date < $now)
-            {
-               echo "<script>alert('date entrée non valide.');</script>";
-            }
-            elseif($heuremin > $user_time || $user_time > $heuremax)
-            {
+            } elseif ($user_datetime < $now) {
+                echo "<script>alert('date entrée non valide.');</script>";
+            } elseif ($minMinutes >  $userTotalMinutes ||  $userTotalMinutes > $maxMinutes) {
                 echo "<script>alert('Veuillez entrer une heure entre 8:00 et 18:00.');</script>";
-            }
-            elseif( $number < 1 || $number > 20)
-            {
+            } elseif ($number_raw < 1) {
                 echo "<script>alert('Le nombre de participants doit être compris entre 1 et 20.');</script>";
-            }
-            else
-            {
+            } elseif ($number_raw > 20) {
+                echo "<script>alert('Le nombre de participants doit être compris entre 1 et 20.');</script>";
+            } else {
                 echo "<script>alert('Erreur inconnue. Veuillez vérifier vos données.');</script>";
             }
         }
-    }
-    else
+    } 
+    else 
     {
         echo "<script>alert('Veuillez remplir tous les champs.');</script>";
     }
@@ -120,23 +117,25 @@ if(isset($_POST['submit']))
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réservation</title>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
+
 <body>
-   <div class="intro">
-        <h1>Réservez vos activités  </h1>
+    <div class="intro">
+        <h1>Réservez vos activités </h1>
 
         <p>
-            Choisissez vos activités, indiquez vos coordonnée et la date souhaitée. 
-            Un email de confirmation vous sera envoyé. 
+            Choisissez vos activités, indiquez vos coordonnée et la date souhaitée.
+            Un email de confirmation vous sera envoyé.
         </p>
-   </div>
-   
-   <form action="" method="post" id="registration-form">
+    </div>
+
+    <form action="" method="post" id="registration-form">
         <fieldset>
             <legend>Formulaire de Réservation</legend><br>
 
@@ -144,7 +143,7 @@ if(isset($_POST['submit']))
             <input type="text" id="full_name" name="full_name" placeholder="Entrez votre nom et votre prénom" required><br>
 
             <label for="email">Addresse email : </label><br>
-            <input type="email" id="email" name="email" placeholder="Entrez votre addresse e-mail" value="<?= htmlspecialchars($user_email)?>" readonly required><br>
+            <input type="email" id="email" name="email" placeholder="Entrez votre addresse e-mail" value="<?= htmlspecialchars($user_email) ?>" readonly required><br>
 
             <label for="telephone">Numéro de téléphone : </label><br>
             <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" required><br>
@@ -153,22 +152,21 @@ if(isset($_POST['submit']))
             <input type="date" id="date" name="date" required><br>
 
             <label for="time">Heure de réservation : </label><br>
-            <input type="time" id="time" name="time"  min="08:00" max="18:00" require><br>
+            <input type="time" id="time" name="time" require><br>
 
             <select name="activities" id="activities">
-                
+                <option value="choisir">Choisissez une activité</option>
                 <optgroup label="activités">
-                    <option value="choisir">Choisissez une activité</option>
-                    <?php foreach($games as $game) : ?>
-                        <option value="<?= htmlspecialchars($game['activity_title'])?>">
-                            <?= htmlspecialchars($game['activity_title'])?>
+                    <?php foreach ($games as $game) : ?>
+                        <option value="<?= htmlspecialchars($game['activity_title']) ?>">
+                            <?= htmlspecialchars($game['activity_title']) ?>
                         </option>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                 </optgroup>
             </select><br>
 
             <label for="number">Nombre des personnes : </label><br>
-            <input type="number" id="number" name="number" placeholder="Entrez le Nombre des personnes"  min="1" max="20" required><br>
+            <input type="number" id="number" name="number" placeholder="Entrez le Nombre des personnes" required><br>
 
             <input type="checkbox" value="condition" name="condition" id="condition" required><label for="condition">J’accepte les conditions générales</label><br>
 
@@ -179,4 +177,5 @@ if(isset($_POST['submit']))
 
     <script src="../assets/script.js"></script>
 </body>
+
 </html>

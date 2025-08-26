@@ -1,8 +1,4 @@
 <?php
-// Gestion de l'affichage des erreurs  
-error_reporting(0);
-ini_set('display_errors', 0);
-
 // Inclure la BDD
 require_once "../includes/config-db.php";
 
@@ -10,7 +6,7 @@ require_once "../includes/config-db.php";
 require_once "../includes/util.php";
 
 // Démarrer la session
-init_session()
+init_session();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +35,7 @@ init_session()
         </thead>
 
         <tbody>
-            
+            on va génerer des lignes
         </tbody>
     </table>
 </body>

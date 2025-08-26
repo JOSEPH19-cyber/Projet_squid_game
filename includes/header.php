@@ -31,9 +31,13 @@
             <a href="../squid_game/reservations.php" aria-label="Mes réservations">
                 <i class="fas fa-calendar-check"></i>
             </a>
-            <!-- Icône utilisateur / connexion -->
+            <!-- Icône de connexion -->
             <a href="../connexion_inscription/connexion.php" aria-label="Mon compte">
                 <i class="fas fa-user"></i>
+            </a>
+            <!-- Icône de déconnexion -->
+            <a href="../connexion_inscription/deconnexion.php" title="Se déconnecter">
+                <i class="fas fa-sign-out-alt"></i>
             </a>
         </div>
 
@@ -58,6 +62,7 @@
                     <li><a href="../squid_game/contact.php">Contact</a></li>
                     <li><a href="../connexion_inscription/connexion.php">Connexion</a></li>
                     <li><a href="../connexion_inscription/inscription.php">Inscription</a></li>
+                    <li><a href="../connexion_inscription/deconnexion.php">Connexion</a></li>
                 </ul>
             </nav>-->
 
