@@ -6,7 +6,7 @@
     <title>Connexion</title>
 </head>
 <body>
-    <h2>Connexion</h2>
+    <h1>Connexion</h1>
 
     <form action="traitement_connexion.php" method="post">
         <div>
@@ -23,7 +23,6 @@
     </form>
 
     <p>
-        <a href="password_forget.php">Mot de passe oublié ?</a><br>
         <a href="inscription.php">Pas encore inscrit ? Créez un compte</a>
     </p>
 </body>

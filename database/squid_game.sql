@@ -22,7 +22,7 @@ COLLATE utf8mb4_unicode_ci;
 
 
 /* CREER LA TABLE activities */
-CREATE TABLE `activitie
+CREATE TABLE `activities`
 (
     `activity_id` INT NOT NULL AUTO_INCREMENT,
     `activity_title` VARCHAR(150) NOT NULL,
@@ -59,7 +59,6 @@ CREATE TABLE `reservations`
     `reservation_id` INT NOT NULL AUTO_INCREMENT,
     `full_name` VARCHAR(150) NOT NULL,
     `phone_number` VARCHAR(50) NOT NULL,
-    `activity_choice` VARCHAR(100) NOT NULL,
     `number` TINYINT NOT NULL,
     PRIMARY KEY(`reservation_id`)
 )
@@ -67,10 +66,26 @@ ENGINE = InnoDB
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
+/* CREER LA TABLE messages */
+CREATE TABLE `messages`
+(
+    `message_id` INT AUTO_INCREMENT,   
+    `user_id` INT NOT NULL,                     
+    `message` TEXT NOT NULL,                      
+    `message_created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(`message_id`),
+    CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
+)
+ENGINE = InnoDB
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+
 
 
 /* ENREGISTREMENTS DE DONNEES*/
-INSERT INTO `activities`(activity_title, short_description, long_description, activity_url)
+
+INSERT INTO `activities`(activity_title, short_description, long_description, activity_url, activity_price)
 VALUES
 ('AUTO TEMPONEUSES', 
 'Venez vous amuser et tester vos réflexes sur nos autos tamponneuses !', 
@@ -82,7 +97,8 @@ et confort tout en offrant une expérience dynamique. Les enfants comme
 les adultes adoreront se faufiler, esquiver et foncer dans une ambiance 
 festive. Ne manquez pas cette attraction incontournable qui allie amusement, 
 adrénaline et souvenirs mémorables.',
-'assets/images/autotemponeuse.jpg'),
+'assets/images/autotemponeuse.jpg',
+'5'),
 
 ('Carrousel', 
 'Profitez d’un tour enchanté sur notre carrousel coloré et musical !', 
@@ -94,7 +110,8 @@ un univers plein de fantaisie et de rires. Nos installations sont
 sécurisées et régulièrement entretenues pour garantir confort et 
 tranquillité. Un incontournable pour une expérience mémorable et des 
 photos inoubliables en famille ou entre amis.', 
-'assets/images/carousel.jpg'),
+'assets/images/carousel.jpg',
+'5'),
 
 ('Toboggan aquatique', 
 'Plongez dans l’aventure avec notre toboggan aquatique géant !', 
@@ -106,7 +123,8 @@ tout en profitant d’un espace bien conçu et sécurisé. Notre équipe veille
 à l’entretien régulier pour garantir la sécurité et le confort. Une expérience 
 aquatique incontournable pour les amateurs de fun et de fraîcheur pendant 
 les chaudes journées au parc.', 
-'assets/images/toboggan.jpg'),
+'assets/images/toboggan.jpg',
+'17'),
 
 ('Montagne russe', 
 'Vivez des frissons intenses sur notre montagne russe spectaculaire !', 
@@ -118,7 +136,8 @@ systèmes de sécurité garantissent une aventure à la fois excitante et sûre.
 Que vous soyez débutant ou passionné de roller coasters, cette attraction est 
 incontournable. Préparez-vous à crier, rire et partager des souvenirs mémorables 
 avec vos amis et votre famille.', 
-'assets/images/montagnerusse.jpg'),
+'assets/images/montagnerusse.jpg',
+'20'),
 
 ('squid game', 
 'Plongez dans l’univers palpitant du Squid Game et relevez tous les défis !', 
@@ -129,7 +148,8 @@ preuve d’adresse, de stratégie et de rapidité pour avancer dans les différe
 reproduisant l’ambiance intense de la série. Idéal pour les groupes d’amis ou 
 les familles, cette activité promet des rires, des surprises et des souvenirs 
 inoubliables. Préparez-vous à tester vos réflexes et votre esprit de compétition !', 
-'assets/images/calamar.jpg'),
+'assets/images/calamar.jpg',
+'5'),
 
 ('réalité virtuelle', 
 'Vivez des aventures immersives grâce à notre expérience de réalité virtuelle.',  
@@ -141,7 +161,8 @@ offrant des sensations fortes tout en restant accessible à tous. Idéal pour le
 passionnés de technologies et les amateurs de frissons virtuels, chaque session 
 promet immersion totale et souvenirs mémorables. Préparez-vous à franchir les 
 frontières de l’imaginaire !', 
-'assets/images/realitevirtuelle.jpg'),
+'assets/images/realitevirtuelle.jpg',
+'20'),
 
 ('Vélo', 
 'Partez à l’aventure sur nos parcours à vélo adaptés à tous les âges.', 
@@ -154,7 +175,8 @@ Chaque vélo est équipé pour assurer confort et sécurité, et nos encadreurs 
 présents pour guider les participants si nécessaire. Une expérience idéale pour 
 les familles, les amis ou les passionnés de cyclisme à la recherche de sensations 
 et de découvertes.', 
-'assets/images/velo.jpg'),
+'assets/images/velo.jpg',
+'17'),
 
 ('Nage', 
 'Plongez et profitez de nos zones de baignade pour tous les âges.', 
@@ -167,7 +189,8 @@ des parents et la sécurité des enfants. Des activités ludiques et éducatives
 sont également proposées pour ceux qui souhaitent apprendre ou perfectionner 
 leur technique de nage. Une expérience rafraîchissante et conviviale pour toute 
 la famille.', 
-'assets/images/nage.jpg'),
+'assets/images/nage.jpg',
+'10'),
 
 ('Grande roue', 
 'Admirez le parc depuis les hauteurs avec notre grande roue spectaculaire.', 
@@ -178,7 +201,8 @@ et sécurisées, permettant à tous, petits et grands, de profiter pleinement de
 Chaque rotation vous transporte dans une aventure paisible et captivante, idéale pour se 
 détendre tout en admirant le paysage. Une attraction incontournable qui combine plaisir, 
 émerveillement et détente pour tous nos visiteurs.', 
-'assets/images/granderoue.jpg'),
+'assets/images/granderoue.jpg',
+'20'),
 
 ('Tyrolienne', 
 'Volez au-dessus du parc avec notre tyrolienne sensationnelle.', 
@@ -191,7 +215,8 @@ garantir une expérience sans risque. Que vous soyez amateur de sensations
 fortes ou en quête d’une aventure inoubliable, la tyrolienne promet un moment 
 mémorable. C’est l’activité idéale pour ajouter un peu d’excitation et de 
 dynamisme à votre visite au parc SQUID GAME.', 
-'assets/images/tyrolienne.jpg');
+'assets/images/tyrolienne.jpg',
+'17');
 
 
 INSERT INTO `activities`(activity_title, short_description, long_description, activity_url, category)
@@ -330,8 +355,16 @@ VALUES
 
 /* INDEX */
 ALTER TABLE `activities`
-ADD COLUMN `category` TINYINT(1) NOT NULL DEFAULT 1;
+ADD COLUMN `activity_price` TINYINT NOT NULL,
+ADD COLUMN `category` TINYINT(1) NOT NULL DEFAULT 1,
+ADD COLUMN `activity_place` TINYINT NOT NULL DEFAULT 0 CHECK (activity_place <= 20);
 
 ALTER TABLE `reservations`
 ADD COLUMN `reservation_date` DATE NOT NULL,
-ADD COLUMN `reservation_time` TIME NOT NULL;
+ADD COLUMN `reservation_time` TIME NOT NULL,
+ADD COLUMN activity_id INT NOT NULL,
+ADD CONSTRAINT fk_reservation_activity
+FOREIGN KEY (activity_id) REFERENCES activities(activity_id) ON DELETE CASCADE,
+ADD COLUMN `user_id` INT NOT NULL,
+ADD CONSTRAINT fk_reservation_user
+FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE;

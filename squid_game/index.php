@@ -14,7 +14,7 @@ if(is_logged())
 {
     $user_name = $_SESSION['user_name'] ?? null;
     $user_id = $_SESSION['user_id'] ?? null;
-    $user_email =  $_SESSION['user_email'] ?? null;
+    $user_email =  $_SESSION['user_email'] ?? '';
 }
 
 //préparer et executer la requête pour les activités
@@ -121,8 +121,10 @@ $delices = $delight->fetchAll(PDO::FETCH_ASSOC);
             adaptées à tous les âges et tous les niveaux. En plus des jeux, profitez de nos espaces 
             de restauration et de détente pour savourer des plats variés et recharger vos batteries. 
             Notre objectif est simple : vous offrir des souvenirs inoubliables et une expérience de 
-            loisirs hors du commun. Osez relever le défi et plongez dans l’aventure SQUID GAME !
-            Le parc est ouvert de 8h à 18h
+            loisirs hors du commun. Osez relever le défi et plongez dans l’aventure SQUID GAME ! <br>
+            Le paiement s'effectue au niveau du guichet du parc <strong>Frais d'entrée : 3000 FC</strong>
+            , plus paiement de l'activité ou des activités reservées.<br>
+            <strong>Le parc est ouvert tous les jours de 8h à 18h.</strong>
         </p>
     </section>
 

@@ -7,6 +7,33 @@ require_once "../includes/util.php";
 
 // Démarrer la session
 init_session();
+
+// Récupérer les infos si l'utilisateur est connecté
+if (is_logged()) {
+    $user_name  = $_SESSION['user_name'] ?? null;
+    $user_id    = $_SESSION['user_id'] ?? null;
+    $user_email = $_SESSION['user_email'] ?? '';
+
+    $stmt = $pdo->prepare("
+    SELECT r.*, a.activity_title, a.activity_price, u.user_email
+    FROM reservations r
+    JOIN activities a ON r.activity_id = a.activity_id
+    JOIN users u ON r.user_id = u.user_id
+    WHERE r.user_id = :user_id
+    ORDER BY r.reservation_date DESC, r.reservation_time DESC;
+    ");
+    $stmt->execute([':user_id' => $user_id]);
+    $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    
+} 
+else 
+{
+    echo "<script>
+            alert(\"Vous n'êtes pas connecté. Veuillez vous connecter pour passer une réservation.\");
+            window.location.href = '../connexion_inscription/connexion.php';
+          </script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,25 +45,54 @@ init_session();
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <table>
-        <caption>Mes réservations</caption>
+    <section class="table">
+        <table>
+            <caption>Mes réservations</caption>
 
-        <thead>
-            <tr>
-                <th>Nom et prénom</th>
-                <th>Adresse email</th>
-                <th>numero de téléphone</th>
-                <th>Date de réservation</th>
-                <th>Heure de réservation</th>
-                <th>Activité choisie</th>
-                <th>nombre</th>
-                <th>Il sera vide on va placer le message de suppression à l'intérieur</th>
-            </tr>
-        </thead>
+            <thead>
+                <tr>
+                    <th>Nom et prénom</th>
+                    <th>Email</th>
+                    <th>numero de téléphone</th>
+                    <th>Date de réservation</th>
+                    <th>Heure de réservation</th>
+                    <th>Activité choisie</th>
+                    <th>Nombre</th>
+                    <th>Prix</th>
+                    <th>Prix total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            on va génerer des lignes
-        </tbody>
-    </table>
+            <tbody>
+                <?php if (count($reservations) > 0): ?>
+                    <?php foreach ($reservations as $res) : ?>
+                        <tr>
+                            <td><?= htmlspecialchars($res['full_name']) ?></td>
+                            <td><?= htmlspecialchars($res['user_email']) ?></td>
+                            <td><?= htmlspecialchars($res['phone_number']) ?></td>
+                            <td><?= htmlspecialchars($res['reservation_date']) ?></td>
+                            <td><?= htmlspecialchars($res['reservation_time']) ?></td>
+                            <td><?= htmlspecialchars($res['activity_title']) ?></td>
+                            <td><?= htmlspecialchars($res['number']) ?></td>
+                            <td><?= htmlspecialchars($res['activity_price']) ?>$</td>
+                            <td><?= htmlspecialchars($res['activity_price'] * $res['number']) ?>$</td>
+                            <td>
+                                <a href="delete_reservation.php?id=<?= urlencode($res['reservation_id']) ?>" 
+                                    class="delete_btn"
+                                    onclick="return confirm('Voulez-vous vraiment supprimer cette réservation ?');">
+                                    Supprimer
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="9"><em>Aucune réservation trouvée.</em></td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>

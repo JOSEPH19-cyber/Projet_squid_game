@@ -14,15 +14,18 @@ if(is_logged())
 {
     $user_name = $_SESSION['user_name'] ?? null;
     $user_id = $_SESSION['user_id'] ?? null;
-    $user_email =  $_SESSION['user_email'] ?? null;
+    $user_email =  $_SESSION['user_email'] ?? '';
 }
 
-//préparer et executer la requête pour les activités
-$sql = $pdo->prepare("SELECT activity_url, activity_title, long_description FROM activities");
-$sql->execute();
+//préparer et executer la requête pour les activités payantes
+$paid_activity = $pdo->prepare("SELECT activity_url, activity_title, long_description, activity_price FROM activities WHERE category = 1");
+$paid_activity->execute();
+$activities_1 = $paid_activity->fetchAll(PDO::FETCH_ASSOC);
 
-//Récupérer les données des activités
-$activities = $sql->fetchAll(PDO::FETCH_ASSOC);
+//préparer et executer la requête pour les activités non payantes
+$free_activity = $pdo->prepare("SELECT activity_url, activity_title, long_description FROM activities WHERE category = 0");
+$free_activity->execute();
+$activities_2 = $free_activity->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -40,21 +43,40 @@ $activities = $sql->fetchAll(PDO::FETCH_ASSOC);
    <?php require_once "../includes/header.php"?>
 
    <main>
-    <main>
-    <section class="activites">
-        <?php foreach($activities as $activity) : ?>
+
+    <h1>Découvrez nos activités</h1>
+
+    <section class="paid_activity">
+        <h2>Activités payantes</h2>
+
+        <?php foreach($activities_1 as $activity_1) : ?>
             <article class="card">
-                <img src="../<?= htmlspecialchars($activity['activity_url'])?>" alt="activité">
+                <img src="../<?= htmlspecialchars($activity_1['activity_url'])?>" alt="activité">
                 <div class="card_description">
-                    <h1><?= htmlspecialchars($activity['activity_title'])?></h1>
-                    <p><?= htmlspecialchars($activity['long_description'])?></p>
+                    <h3><?= htmlspecialchars($activity_1['activity_title'])?></h3>
+                    <p><?= htmlspecialchars($activity_1['long_description'])?></p>
+                    <h4><?= htmlspecialchars($activity_1['activity_price'])?>$</h4>
                     <a href="reservation.php"><button>Réservez</button></a>
                 </div>
             </article>
         <?php endforeach; ?>
+        
     </section>
-</main>
 
+    <section class="free_activity">
+        <h2>Activités gratuites</h2>
+
+        <?php foreach($activities_2 as $activity_2) : ?>
+            <article class="card">
+                <img src="../<?= htmlspecialchars($activity_2['activity_url'])?>" alt="activité">
+                <div class="card_description">
+                    <h3><?= htmlspecialchars($activity_2['activity_title'])?></h3>
+                    <p><?= htmlspecialchars($activity_2['long_description'])?></p>
+                </div>
+            </article>
+        <?php endforeach; ?>
+        
+    </section>
    </main>
 
     

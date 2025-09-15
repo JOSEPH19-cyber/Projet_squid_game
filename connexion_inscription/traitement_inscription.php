@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
             $user = $emailCheckStmt->fetch();
 
             if($user) {
-                echo "Cet email est déjà utilisé.";
+                echo "<script>alert('Cet email existe déjà.');</script>";
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $pdo->prepare("INSERT INTO users (user_name, user_email, user_password) VALUES (:username, :email, :password)");

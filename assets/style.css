@@ -1,82 +1,296 @@
-/* Définition des couleurs */
-:root {
-    --color-primary: #FF0F64; 
-    --color-secondary: #3B0A45;
-    --color-bg-light: #F7F7F7;
-    --color-text-main: #121212;
-    --color-text-secondary: #5F5F5F; 
-    --color-special: #FFC107;
-}
-
-/* Rénitialisation du style par défaut */
-*{
+/* ===============================
+   RESET CSS
+================================ */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f5f5f5;
 }
 
-h1, h2, h3, .slogan, .logo p {
-    font-family: 'Bebas Neue', sans-serif;
+/* ===============================
+   GLOBAL ELEMENTS
+================================ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', cursive;
+    color: #ff5722;
+    margin-bottom: 20px;
 }
 
-
-
-
-/* LE STYLE DE MON HEADER */
-header{
-    background-image: url("../assets/images/parc2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: 100vw;
-    margin-bottom: 100px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.header-container{
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+
+/* ===============================
+   HEADER & FOOTER
+================================ */
+header, footer {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* ===============================
+   MAIN LAYOUT
+================================ */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+section {
+    margin-bottom: 80px;
+}
+
+section h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.see-all {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.see-all .btn-all {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.see-all .btn-all:hover {
+    background-color: #e64a19;
+}
+
+/* ===============================
+   CAROUSEL
+================================ */
+.carousel {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 6rem;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
 }
 
-.logo{
- font-size: 3rem;
- color: var(--color-primary);
+.carousel::-webkit-scrollbar {
+    height: 8px;
 }
 
-.navbar ul{
+.carousel::-webkit-scrollbar-thumb {
+    background: #ff5722;
+    border-radius: 4px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+.carousel article {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.carousel article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.carousel article h2 {
+    font-size: 1.6rem;
+    color: #ff5722;
+    margin: 15px;
+}
+
+.carousel article p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0 15px 15px;
+}
+
+/* Carousel buttons */
+.carousel-btn {
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 2rem;
-    border: 1px solid black;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: background 0.3s ease;
 }
 
-.navbar ul a{
-    font-size: 1.3rem;
-    color: var(--color-secondary);
+.carousel-btn:hover {
+    background-color: #ff5722;
 }
 
-.header-icons{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border: 1px solid black;
+.carousel-btn.prev {
+    left: 10px;
 }
 
-.header-icons,
-.hamburger i{
-    font-size: 1.5rem;
+.carousel-btn.next {
+    right: 10px;
 }
 
-.hamburger{
+/* ===============================
+   BUTTONS
+================================ */
+button.btn-details, .reservation a {
+    display: inline-block;
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    margin: 10px 15px 20px;
+}
 
+button.btn-details:hover, .reservation a:hover {
+    background-color: #e64a19;
+}
+
+/* ===============================
+   RESERVATION SECTION
+================================ */
+.reservation {
+    background-color: #e0f7fa;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 12px;
+}
+
+.reservation h1 {
+    color: #00796b;
+    margin-bottom: 20px;
+}
+
+.reservation p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* ===============================
+   A PROPOS SECTION
+================================ */
+.apropos p {
+    text-align: justify;
+    line-height: 1.7;
+    font-size: 1rem;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+/* ===============================
+   MEDIA QUERIES
+================================ */
+@media screen and (max-width: 1024px) {
+    main {
+        padding: 50px 15px;
+    }
+
+    .carousel article {
+        flex: 0 0 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        padding: 40px 10px;
+    }
+
+    section h1 {
+        font-size: 2rem;
+    }
+
+    .carousel article {
+        flex: 0 0 200px;
+    }
+
+    .carousel article h2 {
+        font-size: 1.4rem;
+    }
+
+    .reservation h1 {
+        font-size: 1.8rem;
+    }
+
+    .apropos p {
+        font-size: 0.95rem;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel article {
+        flex: 0 0 180px;
+    }
+
+    .carousel article h2 {
+        font-size: 1.2rem;
+    }
+
+    .carousel article p {
+        font-size: 0.85rem;
+    }
+
+    .reservation h1 {
+        font-size: 1.5rem;
+    }
+
+    .reservation p {
+        font-size: 0.95rem;
+    }
+
+    .apropos p {
+        font-size: 0.9rem;
+    }
 }

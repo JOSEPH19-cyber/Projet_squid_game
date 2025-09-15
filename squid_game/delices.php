@@ -14,7 +14,7 @@ if(is_logged())
 {
     $user_name = $_SESSION['user_name'] ?? null;
     $user_id = $_SESSION['user_id'] ?? null;
-    $user_email =  $_SESSION['user_email'] ?? null;
+    $user_email =  $_SESSION['user_email'] ?? '';
 }
 
 //préparer et executer la requête pour les délices
@@ -41,16 +41,19 @@ $delices = $sql->fetchAll(PDO::FETCH_ASSOC);
 
    <main>
     <section class="delices">
+        <h1>Découvrez nos délices</h1>
+
         <?php foreach($delices as $delice) : ?>
             <article class="card">
                 <img src="../<?= htmlspecialchars($delice['delice_url'])?>" alt="délice">
                 <div class="card_description">
                     <h1><?= htmlspecialchars($delice['category_type'])?></h1>
                     <p><?= htmlspecialchars($delice['delice_items'])?></p>
-                    <a href="reservation.php"><button>Réservez</button></a>
+                    <a href="../docs/Projet_Squid_Game_Menu.pdf" target="_blank"><button>Voir les prix</button></a>
                 </div>
             </article>
         <?php endforeach; ?>
+        
     </section>
    </main>
 
