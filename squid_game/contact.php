@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
                 $stmt->bindParam(':message', $message, PDO::PARAM_STR);
 
                 if ($stmt->execute()) {
-                    echo "<script>alert('Message envoyé avec succès !');</script>";
+                    echo "<script>alert('Message envoyé avec succèes !');</script>";
                 } else {
                     echo "<script>alert('Erreur lors de l\'envoi du message.');</script>";
                 }
