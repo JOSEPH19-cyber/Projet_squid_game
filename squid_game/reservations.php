@@ -53,7 +53,7 @@ else
                 <tr>
                     <th>Nom et prénom</th>
                     <th>Email</th>
-                    <th>numero de téléphone</th>
+                    <th>Numéro de téléphone</th>
                     <th>Date de réservation</th>
                     <th>Heure de réservation</th>
                     <th>Activité choisie</th>
@@ -68,16 +68,16 @@ else
                 <?php if (count($reservations) > 0): ?>
                     <?php foreach ($reservations as $res) : ?>
                         <tr>
-                            <td><?= htmlspecialchars($res['full_name']) ?></td>
-                            <td><?= htmlspecialchars($res['user_email']) ?></td>
-                            <td><?= htmlspecialchars($res['phone_number']) ?></td>
-                            <td><?= htmlspecialchars($res['reservation_date']) ?></td>
-                            <td><?= htmlspecialchars($res['reservation_time']) ?></td>
-                            <td><?= htmlspecialchars($res['activity_title']) ?></td>
-                            <td><?= htmlspecialchars($res['number']) ?></td>
-                            <td><?= htmlspecialchars($res['activity_price']) ?>$</td>
-                            <td><?= htmlspecialchars($res['activity_price'] * $res['number']) ?>$</td>
-                            <td>
+                            <td data-label="Nom et prénom"><?= htmlspecialchars($res['full_name']) ?></td>
+                            <td data-label="Email"><?= htmlspecialchars($res['user_email']) ?></td>
+                            <td data-label="Numéro de téléphone"><?= htmlspecialchars($res['phone_number']) ?></td>
+                            <td data-label="Date de réservation"><?= htmlspecialchars($res['reservation_date']) ?></td>
+                            <td data-label="Heure de réservation"><?= htmlspecialchars($res['reservation_time']) ?></td>
+                            <td data-label="Activité choisie"><?= htmlspecialchars($res['activity_title']) ?></td>
+                            <td data-label="Nombre"><?= htmlspecialchars($res['number']) ?></td>
+                            <td data-label="Prix"><?= htmlspecialchars($res['activity_price']) ?>$</td>
+                            <td data-label="Prix total"><?= htmlspecialchars($res['activity_price'] * $res['number']) ?>$</td>
+                            <td data-label="Action">
                                 <a href="delete_reservation.php?id=<?= urlencode($res['reservation_id']) ?>" 
                                     class="delete_btn"
                                     onclick="return confirm('Voulez-vous vraiment supprimer cette réservation ?');">
@@ -88,7 +88,7 @@ else
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="9"><em>Aucune réservation trouvée.</em></td>
+                        <td colspan="10"><em>Aucune réservation trouvée.</em></td>
                     </tr>
                 <?php endif; ?>
             </tbody>

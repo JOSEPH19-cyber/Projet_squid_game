@@ -1,10 +1,8 @@
 <!------------------- Header des pages -------------------->
-<link rel="stylesheet" href="../assets/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <header>
 
-    <!-- Overlay pour le menu hamburger -->
+    <!-- Overlay pour le header -->
     <div class="header-overlay"></div>
 
     <div class="header-container">
@@ -47,39 +45,41 @@
             <div class="hamburger-open">
                 <i class="fas fa-bars"></i>
             </div>
-            <!--<div class="hamburger-close">
+            <div class="hamburger-close">
                 <i class="fas fa-times"></i>
-            </div> -->
+            </div> 
 
-            <!-- Liste des liens dans le menu hamburger 
+            <!-- Liste des liens dans le menu hamburger-->
             <nav class="navlist">
                 <ul>
-                    <li><a href="../squid_game/index.php">Accueil</a></li>
-                    <li><a href="../squid_game/activites.php">Activités</a></li>
-                    <li><a href="../squid_game/delices.php">Délices</a></li>
-                    <li><a href="../squid_game/reservation.php">Réservation</a></li>
-                    <li><a href="../squid_game/reservations.php">Mes réservations</a></li>
-                    <li><a href="../squid_game/contact.php">Contact</a></li>
-                    <li><a href="../connexion_inscription/connexion.php">Connexion</a></li>
-                    <li><a href="../connexion_inscription/inscription.php">Inscription</a></li>
-                    <li><a href="../connexion_inscription/deconnexion.php">Connexion</a></li>
+                    <li><a href="../squid_game/index.php" target="_blank">Accueil</a></li>
+                    <li><a href="../squid_game/activites.php" target="_blank">Activités</a></li>
+                    <li><a href="../squid_game/delices.php" target="_blank">Délices</a></li>
+                    <li><a href="../squid_game/reservation.php" target="_blank">Réservation</a></li>
+                    <li><a href="../squid_game/reservations.php" target="_blank">Mes réservations</a></li>
+                    <li><a href="../squid_game/contact.php" target="_blank">Contact</a></li>
+                    <li><a href="../connexion_inscription/connexion.php" target="_blank">Connexion</a></li>
+                    <li><a href="../connexion_inscription/inscription.php" target="_blank">Inscription</a></li>
+                    <li><a href="../connexion_inscription/deconnexion.php" target="_blank">Deconnexion</a></li>
                 </ul>
-            </nav>-->
+            </nav>
 
-            <!-- Overlay 
-            <div class="overlay"></div>-->
+            <!-- Overlay -->
+            <div class="overlay"></div>
         </div>
 
     </div>
     
-    <!-- Barre de recherche 
+    <!-- Barre de recherche -->
     <div class="search-bar">
         <input type="text" placeholder="Rechercher une activité..." id="search-input">
         <div class="search-results" id="search-results"></div>
-    </div>-->
+    </div>
 
-    <!-- Slogan / Hero texte 
+    <!-- Slogan / Hero texte--> 
     <div class="slogan">
         <p>Vivez les aventures de SQUID GAME</p>
-    </div>-->
+    </div>
 </header>
+
+

@@ -132,5 +132,7 @@ $delices = $delight->fetchAll(PDO::FETCH_ASSOC);
 
    <!-- Inclure le footer -->
    <?php require_once "../includes/footer.php"?>
+
+   <script src="../assets/script.js" defer></script>
 </body>
 </html>

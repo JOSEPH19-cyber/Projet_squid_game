@@ -40,7 +40,7 @@ $delices = $sql->fetchAll(PDO::FETCH_ASSOC);
    <?php require_once "../includes/header.php"?>
 
    <main>
-    <section class="delices">
+    <section class="delices_infos">
         <h1>Découvrez nos délices</h1>
 
         <?php foreach($delices as $delice) : ?>
@@ -60,5 +60,7 @@ $delices = $sql->fetchAll(PDO::FETCH_ASSOC);
     
    <!-- Inclure le footer -->
    <?php require_once "../includes/footer.php"?>
+   
+   <script src="../assets/script.js"></script>
 </body>
 </html>

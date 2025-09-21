@@ -26,6 +26,15 @@ $activities_1 = $paid_activity->fetchAll(PDO::FETCH_ASSOC);
 $free_activity = $pdo->prepare("SELECT activity_url, activity_title, long_description FROM activities WHERE category = 0");
 $free_activity->execute();
 $activities_2 = $free_activity->fetchAll(PDO::FETCH_ASSOC);
+
+// Fonction utilitaire pour générer un id propre basé sur le titre
+function slugify($text) {
+    $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text); 
+    $text = preg_replace('~[^\\pL\d]+~u', '-', $text); 
+    $text = trim($text, '-');
+    $text = strtolower($text);
+    return !empty($text) ? $text : 'activite';
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +58,10 @@ $activities_2 = $free_activity->fetchAll(PDO::FETCH_ASSOC);
     <section class="paid_activity">
         <h2>Activités payantes</h2>
 
-        <?php foreach($activities_1 as $activity_1) : ?>
-            <article class="card">
+        <?php foreach($activities_1 as $activity_1) : 
+            $id = "activite-" . slugify($activity_1['activity_title']);
+        ?>
+            <article class="card" id="<?= htmlspecialchars($id) ?>">
                 <img src="../<?= htmlspecialchars($activity_1['activity_url'])?>" alt="activité">
                 <div class="card_description">
                     <h3><?= htmlspecialchars($activity_1['activity_title'])?></h3>
@@ -66,8 +77,10 @@ $activities_2 = $free_activity->fetchAll(PDO::FETCH_ASSOC);
     <section class="free_activity">
         <h2>Activités gratuites</h2>
 
-        <?php foreach($activities_2 as $activity_2) : ?>
-            <article class="card">
+        <?php foreach($activities_2 as $activity_2) : 
+            $id = "activite-" . slugify($activity_2['activity_title']);
+        ?>
+            <article class="card" id="<?= htmlspecialchars($id) ?>">
                 <img src="../<?= htmlspecialchars($activity_2['activity_url'])?>" alt="activité">
                 <div class="card_description">
                     <h3><?= htmlspecialchars($activity_2['activity_title'])?></h3>
@@ -82,5 +95,7 @@ $activities_2 = $free_activity->fetchAll(PDO::FETCH_ASSOC);
     
    <!-- Inclure le footer -->
    <?php require_once "../includes/footer.php"?>
+
+   <script src="../assets/script.js"></script>
 </body>
 </html>
