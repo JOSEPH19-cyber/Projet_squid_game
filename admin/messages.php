@@ -61,14 +61,19 @@ else
 }
 ?>
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lire les messages</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Inclure le header -->
+   <?php require "admin_header.php"?>
+
     <main>
         <h1>Messages reçus</h1>
 
@@ -92,5 +97,7 @@ else
             <p>Aucun message trouvé.</p>
         <?php endif; ?>
     </main>
+
+    <script src="admin.js"></script>
 </body>
 </html>

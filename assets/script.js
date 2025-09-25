@@ -26,14 +26,17 @@ navlist.querySelectorAll("a").forEach(link => {
     });
 });
 
-// -----------------------------
+/// -----------------------------
 // LIEN ACTIF DANS LA NAVBAR (DESKTOP)
 // -----------------------------
 const navbarLinks = document.querySelectorAll(".navbar a");
+
 function updateActiveLink() {
-    const currentPath = window.location.pathname.split("/").pop();
+    // Récupérer le chemin actuel en ignorant query params et ancres
+    const currentPath = window.location.pathname.split("/").pop().split("?")[0].split("#")[0];
+
     navbarLinks.forEach(link => {
-        const linkPath = link.getAttribute("href").split("/").pop();
+        const linkPath = link.getAttribute("href").split("/").pop().split("?")[0].split("#")[0];
         if (linkPath === currentPath || (linkPath === "index.php" && currentPath === "")) {
             link.classList.add("active");
         } else {
@@ -41,13 +44,18 @@ function updateActiveLink() {
         }
     });
 }
+
+// Appliquer dès le chargement
 updateActiveLink();
+
+// Si SPA ou navigation dynamique → on gère aussi le clic
 navbarLinks.forEach(link => {
     link.addEventListener("click", () => {
         navbarLinks.forEach(l => l.classList.remove("active"));
         link.classList.add("active");
     });
 });
+
 
 // -----------------------------
 // RECHERCHE AVEC SUGGESTIONS

@@ -87,6 +87,19 @@ COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `activities`(activity_title, short_description, long_description, activity_url, activity_price)
 VALUES
+('Montagne russe', 
+'Vivez des frissons intenses sur notre montagne russe spectaculaire !', 
+'La montagne russe de SQUID GAME offre une expérience pleine de sensations 
+fortes pour les amateurs de vitesse et d’adrénaline. Avec ses descentes 
+vertigineuses, ses virages serrés et ses boucles surprenantes, chaque 
+tour est un vrai défi pour le courage. Les sièges confortables et les 
+systèmes de sécurité garantissent une aventure à la fois excitante et sûre. 
+Que vous soyez débutant ou passionné de roller coasters, cette attraction est 
+incontournable. Préparez-vous à crier, rire et partager des souvenirs mémorables 
+avec vos amis et votre famille.', 
+'assets/images/montagnerusse.jpg',
+'20');
+
 ('AUTO TEMPONEUSES', 
 'Venez vous amuser et tester vos réflexes sur nos autos tamponneuses !', 
 'Montez à bord de nos autos tamponneuses et laissez libre cours à 

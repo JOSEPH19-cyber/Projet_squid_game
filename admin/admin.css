@@ -1,0 +1,716 @@
+/* ======================================================
+   RESET CSS
+   ====================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* ======================================================
+   STYLE ADMIN - HEADER
+   ====================================================== */
+
+/* Variables globales */
+:root {
+    --primary-color: #e63946;
+    --secondary-color: #1d3557;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --font-title: 'Bebas Neue', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* ======================================================
+   HEADER CONTAINER
+   ====================================================== */
+header {
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--primary-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-body);
+}
+
+/* ======================================================
+   LOGO
+   ====================================================== */
+.logo p {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+/* ======================================================
+   NAVBAR DESKTOP
+   ====================================================== */
+.navbar ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    transition: color 0.3s, border-bottom 0.3s;
+    padding-bottom: 2px;
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
+}
+
+.navbar a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* ======================================================
+   MENU HAMBURGER (MOBILE & TABLETTE)
+   ====================================================== */
+.hamburger {
+    display: none;
+    position: relative;
+}
+
+.hamburger-open,
+.hamburger-close {
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+}
+
+/* ✅ visibilité claire */
+.hamburger-open {
+    color: var(--text-color);
+}
+.hamburger-close {
+    display: none;
+    color: #fff;
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 1200;
+    font-size: 1.9rem;
+    padding: 6px;
+}
+
+.hamburger.active .hamburger-close,
+.hamburger-close.active,
+.hamburger-close.show {
+    display: inline-flex;
+}
+
+.navlist {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100%;
+    background-color: #000;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+    transition: right 0.28s ease-in-out;
+    padding: 2.5rem 1.5rem;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+}
+
+.navlist ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.navlist a {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.25rem 0.35rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.navlist a:hover,
+.navlist a:focus {
+    color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.navlist a.active {
+    color: var(--primary-color);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    z-index: 1090;
+    transition: opacity 0.28s ease;
+}
+
+/* ======================================================
+   RESPONSIVE DESIGN
+   ====================================================== */
+@media (max-width: 992px) {
+    .navbar {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .logo p {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-container {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .logo p {
+        font-size: 1.6rem;
+    }
+
+    .navlist {
+        width: 80%;
+        padding: 2rem 1.25rem;
+    }
+
+    .navlist a {
+        font-size: 1rem;
+    }
+}
+
+/* ======================================================
+   CLASSES DYNAMIQUES
+   ====================================================== */
+.navlist.active {
+    right: 0;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ======================================================
+   STYLES GESTION DES ACTIVITÉS (ADMIN)
+   ====================================================== */
+main {
+    padding: 20px;
+    font-family: var(--font-body);
+}
+
+main h1 {
+    text-align: center;
+    margin: 110px 0 30px 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.paid_activity h2,
+.free_activity h2 {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+
+.card img {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.card_description {
+    width: 60%;
+}
+
+.card_description h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card_description p {
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.card_description h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.card_description a {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.delete_btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.delete_btn:hover {
+    background-color: #d62828;
+}
+
+.add_activity_container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.add_activity_btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add_activity_btn:hover {
+    background-color: #457b9d;
+}
+
+/* ======================================================
+   STYLES MESSAGES REÇUS (ADMIN)
+   ====================================================== */
+.user_info {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    padding: 20px;
+    margin-bottom: 25px;
+    font-family: var(--font-body);
+    text-align: center;
+}
+
+.user_info h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.user_info p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.user_info small {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.user_info .delete_btn {
+    display: inline-block;
+    text-align: center;
+}
+
+/* Séparateur entre messages */
+main hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 25px 0;
+}
+
+/* ======================================================
+   RESPONSIVE ADMIN CONTENT
+   ====================================================== */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card img {
+        width: 100%;
+    }
+
+    .card_description {
+        width: 100%;
+    }
+
+    .card_description h3 {
+        font-size: 1.2rem;
+    }
+
+    .card_description p {
+        font-size: 0.95rem;
+    }
+
+    .delete_btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .user_info {
+        padding: 15px;
+    }
+
+    .user_info h2 {
+        font-size: 1.1rem;
+    }
+
+    .user_info p {
+        font-size: 0.95rem;
+    }
+
+    .user_info small {
+        font-size: 0.8rem;
+    }
+
+    .user_info .delete_btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .user_info {
+        padding: 12px;
+    }
+
+    .user_info h2 {
+        font-size: 1rem;
+    }
+
+    .user_info p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* ======================================================
+   DASHBOARD PAGE
+   ====================================================== */
+
+/* Structure principale */
+.body_dashboard {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-color, #333);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: var(--secondary-color, #1d3557);
+    color: #fff;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    z-index: 100;
+}
+
+.sidebar .dashboard_logo {
+    font-family: 'Bebas Neue', sans-serif;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.sidebar .nav-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar .nav-links a {
+    color: #fff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background 0.3s, padding-left 0.3s;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.sidebar .nav-links a:hover {
+    background: rgba(255,255,255,0.1);
+    padding-left: 1.2rem;
+}
+
+/* Header */
+.dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 240px;
+    right: 0;
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    z-index: 101;
+}
+
+.dashboard-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--secondary-color, #1d3557);
+    text-align: center;
+    line-height: 1.2; /* pour éviter le débordement des mots */
+}
+
+/* Main */
+.dashboard {
+    flex: 1;
+    margin-left: 240px;
+    margin-top: 70px;
+    padding: 2rem;
+}
+
+/* Statistiques rapides */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color, #1d3557);
+    text-align: center;
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color, #e63946);
+    margin-bottom: 0.5rem;
+}
+
+.stat-card small {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+
+/* Contenu détaillé */
+.dashboard-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centrage horizontal du contenu */
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color, #1d3557);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    text-align: center; /* centrage des titres */
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.card ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+    text-align: center; /* centrage des items */
+}
+
+.card ul li:last-child {
+    border-bottom: none;
+}
+
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: center; /* centrage du contenu du tableau */
+}
+
+.card table th, 
+.card table td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+}
+
+.card table th {
+    background: var(--secondary-color, #1d3557);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+/* Tablette */
+@media (max-width: 992px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+
+    .dashboard-content {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+    .dashboard-header {
+        left: 200px;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .dashboard {
+        margin-left: 200px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 180px; /* plus petit pour mobile */
+    }
+
+    .dashboard-header {
+        left: 180px;
+        width: calc(100% - 180px);
+    }
+
+    .dashboard {
+        margin-left: 180px;
+        margin-top: 70px;
+        padding: 1rem;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .dashboard-content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .card, .stat-card {
+        padding: 1rem;
+        width: 90%; /* centrage avec marges */
+    }
+}

@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         $user_id = $_SESSION['user_id'] ?? null;
 
         if (!empty($message)) {
-            if (strlen($message) <= 1000) {
+            if (strlen($message) <= 300) {
                 // Insérer le message dans la BDD
                 $stmt = $pdo->prepare("INSERT INTO messages (user_id, message) VALUES (:user_id, :message)");
                 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
                     echo "<script>alert('Erreur lors de l\'envoi du message.');</script>";
                 }
             } else {
-                echo "<script>alert('Veuillez limiter la taille du message (1000 caractères max) !');</script>";
+                echo "<script>alert('Veuillez limiter la taille du message (300 caractères max) !');</script>";
             }
         } else {
             echo "<script>alert('Le message ne peut pas être vide !');</script>";

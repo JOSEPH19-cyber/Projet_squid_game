@@ -41,12 +41,16 @@ else
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Activités</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Inclure le header -->
+   <?php require "admin_header.php"?>
 
 <main>
+    
     <h1>Gestion des activités</h1>
 
     <section class="paid_activity">
@@ -89,6 +93,7 @@ else
     </div>
 
 </main>
-
+    
+    <script src="admin.js"></script>
 </body>
 </html>

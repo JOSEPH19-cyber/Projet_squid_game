@@ -63,12 +63,16 @@ if (is_admin()) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
+<link rel="stylesheet" href="admin.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="body_dashboard">
 <!-- Sidebar -->
 <aside class="sidebar">
-    <div class="dashboard_logo"><h2>LOGO</h2></div>
+    <div class="dashboard_logo">
+        <h2>SQUID GAME</h2>
+    </div>
     <nav class="nav-links">
         <ul>
             <li><a href="dashboard.php"><i class="fas fa-home"></i>Accueil</a></li>
@@ -82,11 +86,13 @@ if (is_admin()) {
     </nav>
 </aside>
 
-<!-- Contenu principal -->
-<main class="dashboard">
+<!-- header -->
 <header class="dashboard-header">
     <h1>Tableau de bord Administrateur</h1>
 </header>
+
+<!-- Contenu principal -->
+<main class="dashboard">
 
 <!-- Statistiques rapides -->
 <section class="stats">
