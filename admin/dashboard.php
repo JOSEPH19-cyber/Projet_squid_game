@@ -38,7 +38,7 @@ if (is_admin()) {
         ORDER BY total_res DESC
         LIMIT 1
     ");
-    $totalUsers = (int)(qOne($pdo, "SELECT COUNT(*) AS cnt FROM users")['cnt'] ?? 0);
+    $totalUsers = (int)(qOne($pdo, "SELECT COUNT(*) AS cnt FROM users WHERE is_admin = 0")['cnt'] ?? 0);
     $mostActiveUser = $topUserByReservations;
 
     $last3Activities = qAll($pdo, "SELECT activity_title FROM activities ORDER BY activity_created_at DESC LIMIT 3");
@@ -49,7 +49,7 @@ if (is_admin()) {
         ORDER BY r.reservation_date DESC, r.reservation_time DESC
         LIMIT 3
     ");
-    $last3Users = qAll($pdo, "SELECT user_name FROM users ORDER BY registration_date DESC LIMIT 3");
+    $last3Users = qAll($pdo, "SELECT user_name FROM users WHERE is_admin = 0 ORDER BY registration_date DESC LIMIT 3");
 
 } else {
     header("Location: ../connexion_inscription/login.php");
@@ -77,10 +77,11 @@ if (is_admin()) {
         <ul>
             <li><a href="dashboard.php"><i class="fas fa-home"></i>Accueil</a></li>
             <li><a href="admin_activities.php"><i class="fas fa-gamepad"></i> Activités</a></li>
-            <li><a href=""><i class="fas fa-utensils"></i> Délices</a></li>
+            <li><a href="admin_delices.php"><i class="fas fa-utensils"></i> Délices</a></li>
             <li><a href="admin_reservation.php"><i class="fas fa-calendar-alt"></i> Réservations</a></li>
             <li><a href="admin_users.php"><i class="fas fa-users"></i> Utilisateurs</a></li>
             <li><a href="settings.php"><i class="fas fa-cog"></i> Paramètres</a></li>
+            <li><a href="messages.php"><i class="fa-regular fa-envelope"></i> Messages</a></li>
             <li><a href="../connexion_inscription/deconnexion.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
         </ul>
     </nav>

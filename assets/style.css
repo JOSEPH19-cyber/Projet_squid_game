@@ -52,7 +52,6 @@ header {
     background-size: cover;
 }
 
-/* overlay */
 .header-overlay{
     position: absolute;
     inset: 0;
@@ -75,7 +74,6 @@ header {
     padding: 1rem 2rem;
 }
 
-/* LOGO */
 .logo p{
     font-size: 2.2rem;
     font-weight: 800;
@@ -83,7 +81,6 @@ header {
     color: var(--primary-color);
 }
 
-/* NAVIGATION DESKTOP */
 .navbar ul{
     display: flex;
     gap: 2rem;
@@ -105,7 +102,6 @@ header {
     transform: translateY(-2px);
 }
 
-/* LIEN ACTIF POUR LA PAGE COURANTE (DESKTOP & HAMBURGER) */
 .navbar a.active,
 .navlist a.active{
     color: var(--accent-color);
@@ -115,7 +111,6 @@ header {
     transition: background var(--transition), color var(--transition);
 }
 
-/* ICONES RAPIDES */
 .header-icons{
     display: flex;
     gap: 1.25rem;
@@ -153,7 +148,6 @@ header {
     justify-content: center;
 }
 
-/* CLOSE ICON MENU HAMBURGER */
 .hamburger-close{
     display: none;
     color: #fff !important;
@@ -205,7 +199,6 @@ header {
     color: #111;
 }
 
-/* Scrollbar */
 .navlist::-webkit-scrollbar{ width: 8px; }
 .navlist::-webkit-scrollbar-thumb{
     background: rgba(255,255,255,0.3);
@@ -260,7 +253,6 @@ header {
     color: #111;
 }
 
-/* résultats de recherche */
 .search-results{
     position: absolute;
     top: calc(100% + 8px);
@@ -335,7 +327,6 @@ header {
 /* PAGE D'ACCUEIL - ACTIVITÉS & DÉLICES      */
 /* ========================================= */
 
-/* TITRES DES SECTIONS */
 main section h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.5rem;
@@ -344,13 +335,11 @@ main section h1 {
     margin: 2rem 0 1rem 0;
 }
 
-/* SECTION = RÉFÉRENTIEL POUR LES BOUTONS */
 .activites, .delices {
     position: relative; 
     padding: 2rem 0;
 }
 
-/* CARROUSEL - CONTENEUR */
 .carousel {
     display: grid;
     grid-auto-flow: column;
@@ -370,7 +359,6 @@ main section h1 {
     border-radius: 10px;
 }
 
-/* CARTES ACTIVITÉ / DÉLICES */
 .activity_card, .delices article {
     background-color: #fff;
     border-radius: 12px;
@@ -387,7 +375,6 @@ main section h1 {
     box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
 
-/* IMAGE */
 .activity_card img, .delices article img {
     width: 100%;
     height: 180px;
@@ -396,7 +383,6 @@ main section h1 {
     margin-bottom: 1rem;
 }
 
-/* TITRE */
 .activity_card h2, .delices article h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
@@ -405,7 +391,6 @@ main section h1 {
     text-align: center;
 }
 
-/* DESCRIPTION */
 .activity_card p, .delices article p {
     font-size: 0.95rem;
     color: #444;
@@ -414,7 +399,6 @@ main section h1 {
     flex-grow: 1;
 }
 
-/* BOUTONS "EN SAVOIR PLUS" */
 .btn-details {
     padding: 0.6rem 1.2rem;
     border-radius: 25px;
@@ -433,7 +417,6 @@ main section h1 {
     transform: scale(1.05);
 }
 
-/* BOUTONS CARROUSEL */
 .carousel-btn {
     background-color: rgba(0,0,0,0.5);
     color: #fff;
@@ -462,7 +445,6 @@ main section h1 {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* SEE ALL */
 .see-all {
     text-align: center;
     margin: 1.5rem 0 3rem 0;
@@ -485,7 +467,6 @@ main section h1 {
     transform: scale(1.05);
 }
 
-/* RÉSERVATION */
 .reservation {
     background-color: var(--primary-color);
     color: #fff;
@@ -518,7 +499,6 @@ main section h1 {
     transform: scale(1.05);
 }
 
-/* À PROPOS */
 .apropos {
     background-color: #fff;
     color: #111;
@@ -544,7 +524,6 @@ main section h1 {
 /* RESPONSIVE GRID DES CARTES    */
 /* ============================= */
 
-/* Tablette : 2 cartes visibles */
 @media (max-width: 992px){
     .carousel {
         grid-auto-columns: calc(50% - 1rem); 
@@ -553,7 +532,6 @@ main section h1 {
     }
 }
 
-/* Mobile : 1 carte visible */
 @media (max-width: 768px){
     .carousel {
         grid-auto-columns: 100%; 
@@ -575,15 +553,13 @@ main section h1 {
    PAGE ACTIVITÉS & DÉLICES - CARTES
    ========================================= */
 
-/* TITRES DES SECTIONS */
 main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
-    text-align: center; /* TITRES CENTRÉS */
+    text-align: center;
     font-family: 'Bebas Neue', sans-serif;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
 }
 
-/* CARTES COMMUNES (Activités + Délices) */
 .paid_activity .card, 
 .free_activity .card, 
 .delices_infos .card {
@@ -598,7 +574,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* IMAGE COMMUNE */
 .paid_activity .card img,
 .free_activity .card img,
 .delices_infos .card img {
@@ -609,7 +584,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     flex-shrink: 0;
 }
 
-/* DESCRIPTION COMMUNE */
 .paid_activity .card_description,
 .free_activity .card_description,
 .delices_infos .card_description {
@@ -619,7 +593,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     flex: 1;
 }
 
-/* TITRES DANS LES CARTES */
 .paid_activity .card_description h3,
 .free_activity .card_description h3,
 .delices_infos .card_description h1 {
@@ -629,7 +602,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     text-align: center;
 }
 
-/* LONGUE DESCRIPTION */
 .paid_activity .card_description p,
 .free_activity .card_description p,
 .delices_infos .card_description p {
@@ -639,7 +611,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     text-align: justify;
 }
 
-/* PRIX - CENTRÉ POUR LES ACTIVITÉS */
 .paid_activity .card_description h4,
 .free_activity .card_description h4 {
     text-align: center;
@@ -648,7 +619,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     font-weight: 600;
 }
 
-/* BOUTONS UNIFORMES */
 .paid_activity .card_description button,
 .free_activity .card_description button,
 .delices_infos .card_description button {
@@ -671,7 +641,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     transform: scale(1.05);
 }
 
-/* HOVER SUR LES CARTES */
 .paid_activity .card:hover,
 .free_activity .card:hover,
 .delices_infos .card:hover {
@@ -714,7 +683,7 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     .paid_activity .card_description h3, 
     .free_activity .card_description h3, 
     .delices_infos .card_description h1 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
 
     .paid_activity .card_description p, 
@@ -734,7 +703,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
    PAGE RÉSERVATION
    ========================================= */
 
-/* CONTENEUR INTRO */
 .intro {
     max-width: 800px;
     margin: 2rem auto;
@@ -755,7 +723,6 @@ main h1, .paid_activity h2, .free_activity h2, .delices_infos h1 {
     color: #444;
 }
 
-/* FORMULAIRE */
 form {
     max-width: 700px;
     margin: 2rem auto;
@@ -786,7 +753,6 @@ form label {
     font-weight: 600;
 }
 
-/* CHAMPS INPUT & SELECT */
 form input[type="text"],
 form input[type="email"],
 form input[type="tel"],
@@ -810,12 +776,10 @@ form select:focus {
     outline: none;
 }
 
-/* CHECKBOX */
 form input[type="checkbox"] {
     margin-right: 0.5rem;
 }
 
-/* BOUTON */
 form button[type="submit"] {
     display: block;
     width: 100%;
@@ -837,7 +801,6 @@ form button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* RESPONSIVE TABLETTE */
 @media (max-width: 992px) {
     form {
         padding: 1.5rem;
@@ -853,7 +816,6 @@ form button[type="submit"]:hover {
     }
 }
 
-/* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
     form {
         padding: 1rem;
@@ -878,7 +840,6 @@ form button[type="submit"]:hover {
    FORMULAIRES INSCRIPTION & CONNEXION
    ========================================= */
 
-/* CONTENEUR GÉNÉRAL */
 .auth-container {
     max-width: 450px;
     margin: 3rem auto;
@@ -889,23 +850,20 @@ form button[type="submit"]:hover {
     font-family: 'Poppins', sans-serif;
 }
 
-/* TITRES */
 .auth-container h1 {
     text-align: center;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.2rem;
     color: var(--primary-color);
-    margin-bottom: 2rem; /* léger ajustement pour plus d’air */
+    margin-bottom: 2rem; 
 }
 
-/* FORM */
 .auth-container form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-/* GROUPES DE CHAMPS */
 .auth-container .form-group {
     display: flex;
     flex-direction: column;
@@ -918,7 +876,6 @@ form button[type="submit"]:hover {
     color: #333;
 }
 
-/* CHAMPS INPUT */
 .auth-container input[type="text"],
 .auth-container input[type="email"],
 .auth-container input[type="password"] {
@@ -928,7 +885,7 @@ form button[type="submit"]:hover {
     border-radius: 8px;
     font-size: 1rem;
     transition: border 0.3s, box-shadow 0.3s;
-    box-sizing: border-box; /* uniformité pour TOUS les champs */
+    box-sizing: border-box; 
 }
 
 .auth-container input:focus {
@@ -937,7 +894,6 @@ form button[type="submit"]:hover {
     outline: none;
 }
 
-/* BOUTON */
 .auth-container button[type="submit"] {
     margin-top: 1rem;
     padding: 0.7rem 1.2rem;
@@ -949,7 +905,7 @@ form button[type="submit"]:hover {
     border-radius: 25px;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
-    width: 100%; /* bouton bien aligné avec les inputs */
+    width: 100%;
 }
 
 .auth-container button[type="submit"]:hover {
@@ -957,7 +913,6 @@ form button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* LIEN SECONDAIRE (Inscription <-> Connexion) */
 .auth-container p {
     text-align: center;
     margin-top: 1.5rem;
@@ -980,8 +935,8 @@ form button[type="submit"]:hover {
 /* RESPONSIVE TABLETTE */
 @media (max-width: 992px) {
     .auth-container {
-        max-width: 400px; /* réduit un peu la largeur */
-        margin: 2rem auto; /* centré comme desktop */
+        max-width: 400px; 
+        margin: 2rem auto; 
         padding: 1.5rem;
     }
 
@@ -993,7 +948,7 @@ form button[type="submit"]:hover {
 /* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
     .auth-container {
-        max-width: 100%; /* prend toute la largeur dispo */
+        max-width: 100%; 
         margin: 1.5rem 1rem;
         padding: 1rem;
     }
@@ -1020,17 +975,15 @@ form button[type="submit"]:hover {
     font-family: 'Poppins', sans-serif;
 }
 
-/* CAPTION */
 .table caption {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    text-align: center; /* ✅ Centré partout */
+    text-align: center; 
 }
 
-/* TABLEAU */
 .table table {
     width: 100%;
     border-collapse: collapse;
@@ -1040,7 +993,6 @@ form button[type="submit"]:hover {
     background-color: #fff;
 }
 
-/* EN-TÊTES */
 .table thead {
     background-color: var(--primary-color);
     color: #fff;
@@ -1054,26 +1006,22 @@ form button[type="submit"]:hover {
     font-weight: 600;
 }
 
-/* CELLULES */
 .table tbody td {
     padding: 0.8rem 1rem;
-    text-align: center; /* ✅ Centrage par défaut */
+    text-align: center; 
     font-size: 0.95rem;
     border-bottom: 1px solid #eee;
     color: #444;
 }
 
-/* ALTERNANCE DES LIGNES */
 .table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* HOVER SUR LES LIGNES */
 .table tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* MESSAGE AUCUNE RÉSERVATION */
 .table tbody td[colspan] {
     text-align: center;
     font-style: italic;
@@ -1081,7 +1029,6 @@ form button[type="submit"]:hover {
     padding: 1.5rem;
 }
 
-/* BOUTON SUPPRIMER */
 .delete_btn {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -1103,7 +1050,6 @@ form button[type="submit"]:hover {
    RESPONSIVE DESIGN
    ========================================= */
 
-/* TABLETTE */
 @media (max-width: 992px) {
     .table {
         padding: 0.5rem;
@@ -1119,7 +1065,6 @@ form button[type="submit"]:hover {
     }
 }
 
-/* MOBILE : AFFICHAGE EN CARTES */
 @media (max-width: 768px) {
     .table table,
     .table thead,
@@ -1132,11 +1077,11 @@ form button[type="submit"]:hover {
     }
 
     .table thead {
-        display: none; /* masque l'en-tête */
+        display: none;
     }
 
     .table caption {
-        text-align: center;   /* ✅ Forcer le centrage */
+        text-align: center; 
         display: block;
         width: 100%;
         margin-bottom: 1.5rem;
@@ -1151,8 +1096,8 @@ form button[type="submit"]:hover {
     }
 
     .table tbody td {
-        text-align: center; /* ✅ Texte centré sur mobile */
-        padding: 0.5rem 0 0.5rem 50%; /* laisse la place au data-label */
+        text-align: center; 
+        padding: 0.5rem 0 0.5rem 50%; 
         border: none;
         font-size: 0.95rem;
         position: relative;
@@ -1163,7 +1108,7 @@ form button[type="submit"]:hover {
         position: absolute;
         left: 10px;
         width: 45%;
-        text-align: left; /* ✅ Les labels restent à gauche */
+        text-align: left; 
         font-weight: 600;
         text-transform: capitalize;
         color: var(--primary-color);
@@ -1189,7 +1134,6 @@ form button[type="submit"]:hover {
     font-family: 'Poppins', sans-serif;
 }
 
-/* TITRE PRINCIPAL */
 .contact-title {
     text-align: center;
     font-family: 'Bebas Neue', sans-serif;
@@ -1198,7 +1142,6 @@ form button[type="submit"]:hover {
     margin-bottom: 2rem;
 }
 
-/* INFOS GÉNÉRALES */
 .contact-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1237,7 +1180,6 @@ form button[type="submit"]:hover {
     color: #555;
 }
 
-/* RÉSEAUX SOCIAUX */
 .social-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1275,7 +1217,6 @@ form button[type="submit"]:hover {
     color: #555;
 }
 
-/* FORMULAIRE */
 .contact-page form {
     display: flex;
     flex-direction: column;
@@ -1323,7 +1264,6 @@ form button[type="submit"]:hover {
    RESPONSIVE DESIGN
    ========================================= */
 
-/* TABLETTE */
 @media (max-width: 992px) {
     .contact-page {
         padding: 1.5rem;
@@ -1334,7 +1274,6 @@ form button[type="submit"]:hover {
     }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
     .contact-page {
         padding: 1rem;
@@ -1346,7 +1285,7 @@ form button[type="submit"]:hover {
 
     .contact-info,
     .social-links {
-        grid-template-columns: 1fr; /* ✅ Pile verticale */
+        grid-template-columns: 1fr;
     }
 
     .message-textarea {
@@ -1354,7 +1293,7 @@ form button[type="submit"]:hover {
     }
 
     .contact-btn {
-        width: 100%; /* ✅ bouton pleine largeur */
+        width: 100%; 
         max-width: 400px;
     }
 }
@@ -1380,7 +1319,6 @@ footer {
     justify-content: space-between;
 }
 
-/* LOGO */
 .footer_logo p {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
@@ -1388,7 +1326,6 @@ footer {
     margin-bottom: 1rem;
 }
 
-/* NAVIGATION RAPIDE */
 .footer_nav h3 {
     font-family: 'Bebas Neue', sans-serif;
     color: var(--primary-color);
@@ -1416,7 +1353,6 @@ footer {
     color: var(--accent-color);
 }
 
-/* CONTACT */
 .footer_contact h3 {
     font-family: 'Bebas Neue', sans-serif;
     color: var(--primary-color);
@@ -1434,7 +1370,6 @@ footer {
     color: var(--primary-color);
 }
 
-/* RÉSEAUX SOCIAUX */
 .footer_socials h3 {
     font-family: 'Bebas Neue', sans-serif;
     color: var(--primary-color);
@@ -1469,7 +1404,6 @@ footer {
     color: var(--accent-color);
 }
 
-/* BOTTOM COPYRIGHT */
 .footer_bottom {
     text-align: center;
     margin-top: 2rem;
@@ -1483,7 +1417,6 @@ footer {
    RESPONSIVE
    ========================================= */
 
-/* TABLETTE */
 @media (max-width: 992px) {
     .footer-container {
         flex-direction: column;
@@ -1499,7 +1432,6 @@ footer {
     }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;

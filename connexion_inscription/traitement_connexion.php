@@ -53,7 +53,7 @@ if(isset($_POST['submit'])) {
             }
         } else {
             // Email non trouvé
-            echo "<script>alert('Mot de passe ou email incorrect.'); window.location.href='connexion.php';</script>";
+            echo "<script>alert('Aucun compte associé à cet e-mail. Merci de vous inscrire avant de vous connecter.'); window.location.href='connexion.php';</script>";
         }
 
     } else {

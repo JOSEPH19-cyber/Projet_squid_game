@@ -110,6 +110,7 @@ else
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <h1>Gestion des administrateurs</h1>
 
     <!-- Liste des admins -->
@@ -146,7 +147,7 @@ else
         </table>
     </section>
 
-    <section>
+    <section class="auth-container">
         <!-- Ajouter un admin -->
         <h2>Ajouter un administrateur</h2>
 
@@ -155,22 +156,31 @@ else
             <fieldset>
             <legend>Insertion</legend>
 
-                <label for="username">Nom d'utilisateur : </label><br>
-                <input type="text" id="username" name="username" required><br>
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur : </label><br>
+                    <input type="text" id="username" name="username" required><br>
+                </div>
 
-                <label for="email">Adresse e-mail : </label><br>
-                <input type="email" id="email" name="email" required><br>
+                <div class="form-group">
+                    <label for="email">Adresse e-mail : </label><br>
+                    <input type="email" id="email" name="email" required><br>
+                </div>
 
-                <label for="password">Mot de passe : </label><br>
-                <input type="password" id="password" name="password" required><br>
+                <div class="form-group">
+                    <label for="password">Mot de passe : </label><br>
+                    <input type="password" id="password" name="password" required><br>
+                </div>
 
-                <label for="confirm_password">Confirmer le mot de passe : </label><br>
-                <input type="password" id="confirm_password" name="confirm_password" required><br>
-
+                <div class="form-group">
+                    <label for="confirm_password">Confirmer le mot de passe : </label><br>
+                    <input type="password" id="confirm_password" name="confirm_password" required><br>
+                </div>
+        
                 <button type="submit" name="submit">Ajouter</button>
             </fieldset>
         </form>
 
     </section>
+
 </body>
 </html>

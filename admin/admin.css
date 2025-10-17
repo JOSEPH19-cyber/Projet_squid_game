@@ -106,7 +106,6 @@ header {
     border: none;
 }
 
-/* ✅ visibilité claire */
 .hamburger-open {
     color: var(--text-color);
 }
@@ -344,7 +343,7 @@ main h1 {
 }
 
 .user_info h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--secondary-color);
@@ -369,7 +368,6 @@ main h1 {
     text-align: center;
 }
 
-/* Séparateur entre messages */
 main hr {
     border: none;
     border-top: 1px solid #ddd;
@@ -410,10 +408,6 @@ main hr {
         padding: 15px;
     }
 
-    .user_info h2 {
-        font-size: 1.1rem;
-    }
-
     .user_info p {
         font-size: 0.95rem;
     }
@@ -434,10 +428,6 @@ main hr {
         padding: 12px;
     }
 
-    .user_info h2 {
-        font-size: 1rem;
-    }
-
     .user_info p {
         font-size: 0.9rem;
     }
@@ -449,7 +439,6 @@ main hr {
    DASHBOARD PAGE
    ====================================================== */
 
-/* Structure principale */
 .body_dashboard {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
@@ -458,7 +447,6 @@ main hr {
     min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     width: 240px;
     background: var(--secondary-color, #1d3557);
@@ -504,7 +492,7 @@ main hr {
     padding-left: 1.2rem;
 }
 
-/* Header */
+
 .dashboard-header {
     position: fixed;
     top: 0;
@@ -525,10 +513,9 @@ main hr {
     font-size: 2rem;
     color: var(--secondary-color, #1d3557);
     text-align: center;
-    line-height: 1.2; /* pour éviter le débordement des mots */
+    line-height: 1.2;
 }
 
-/* Main */
 .dashboard {
     flex: 1;
     margin-left: 240px;
@@ -536,7 +523,6 @@ main hr {
     padding: 2rem;
 }
 
-/* Statistiques rapides */
 .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -582,7 +568,6 @@ main hr {
     text-align: center;
 }
 
-/* Contenu détaillé */
 .dashboard-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -596,7 +581,7 @@ main hr {
     box-shadow: 0 3px 8px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
-    align-items: center; /* centrage horizontal du contenu */
+    align-items: center;
 }
 
 .card h2 {
@@ -605,7 +590,7 @@ main hr {
     color: var(--secondary-color, #1d3557);
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5rem;
-    text-align: center; /* centrage des titres */
+    text-align: center; 
 }
 
 .card ul {
@@ -619,7 +604,7 @@ main hr {
     padding: 0.5rem 0;
     border-bottom: 1px solid #f0f0f0;
     font-size: 0.95rem;
-    text-align: center; /* centrage des items */
+    text-align: center; 
 }
 
 .card ul li:last-child {
@@ -630,7 +615,7 @@ main hr {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9rem;
-    text-align: center; /* centrage du contenu du tableau */
+    text-align: center; 
 }
 
 .card table th, 
@@ -649,7 +634,6 @@ main hr {
    RESPONSIVE
    ====================================================== */
 
-/* Tablette */
 @media (max-width: 992px) {
     .stats {
         grid-template-columns: repeat(2, 1fr);
@@ -674,7 +658,6 @@ main hr {
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     body {
         flex-direction: column;
@@ -685,7 +668,7 @@ main hr {
         left: 0;
         top: 0;
         height: 100%;
-        width: 180px; /* plus petit pour mobile */
+        width: 180px; 
     }
 
     .dashboard-header {
@@ -711,6 +694,205 @@ main hr {
 
     .card, .stat-card {
         padding: 1rem;
-        width: 90%; /* centrage avec marges */
+        width: 90%; 
+    }
+}
+
+
+/* ======================================================
+   ADMIN FORMS & TABLES
+   ====================================================== */
+
+/* Conteneur des formulaires */
+.auth-container {
+    background: #fff;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.auth-container h1,
+.auth-container h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; 
+    color: var(--secondary-color, #1d3557);
+    margin-bottom: 1rem;
+}
+
+body h1:first-of-type,
+body h2:first-of-type {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--secondary-color, #1d3557);
+}
+
+.auth-container fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center; 
+}
+
+.auth-container legend {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; 
+    color: var(--secondary-color, #1d3557);
+    padding: 0 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    text-align: left; 
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--text-color, #333);
+    font-size: 1rem; 
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 0.6rem 0.85rem; 
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem; 
+    font-family: 'Poppins', sans-serif;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color, #e63946);
+    outline: none;
+    box-shadow: 0 0 5px rgba(230,57,70,0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Boutons */
+.auth-container button {
+    background: var(--primary-color, #e63946);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.4rem; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    align-self: center; 
+    margin-top: 0.5rem;
+    font-size: 1rem; 
+}
+
+.auth-container button:hover {
+    background: #d52b3f;
+    transform: translateY(-2px);
+}
+
+.table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.9rem; 
+}
+
+.table th {
+    background: var(--secondary-color, #1d3557);
+    color: #fff;
+    font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.table tr:hover {
+    background: rgba(230,57,70,0.05);
+}
+
+.delete_btn button {
+    background: #e63946;
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.delete_btn button:hover {
+    background: #d52b3f;
+    transform: translateY(-1px);
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 992px) {
+    .auth-container {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+        max-width: 90%;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 0.95rem;
+        padding: 0.5rem;
+    }
+
+    .auth-container h1,
+    .auth-container h2,
+    .auth-container legend {
+        font-size: 1.6rem; 
+    }
+
+    .auth-container button {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.95rem;
     }
 }

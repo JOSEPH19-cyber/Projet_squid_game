@@ -14,7 +14,7 @@
             <ul>
                 <li><a href="dashboard.php" target="_blank">Accueil</a></li>
                 <li><a href="admin_activities.php" target="_blank">Activités</a></li>
-                <li><a href="" target="_blank">Délices</a></li>
+                <li><a href="admin_delices.php" target="_blank">Délices</a></li>
                 <li><a href="admin_reservation.php" target="_blank">Réservation</a></li>
                 <li><a href="messages.php" target="_blank">Messages</a></li>
                 <li><a href="settings.php" target="_blank">Paramètres</a></li>

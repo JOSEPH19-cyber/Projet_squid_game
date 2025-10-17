@@ -16,15 +16,15 @@ if(is_admin()) {
     $user_email= $_SESSION['user_email'] ?? '';
 
 
-    // Préparer et exécuter la requête pour les activités payantes
-    $paid_activity = $pdo->prepare("SELECT activity_id, activity_url, activity_title, long_description, activity_price FROM activities WHERE category = 1");
-    $paid_activity->execute();
-    $activities_1 = $paid_activity->fetchAll(PDO::FETCH_ASSOC);
+    //préparer et executer la requête pour les plats
+    $plats = $pdo->prepare("SELECT delice_id, delice_url, category_type, delice_items FROM delices WHERE delice_type = 0");
+    $plats->execute();
+    $delices_1 = $plats->fetchAll(PDO::FETCH_ASSOC);
 
-    // Préparer et exécuter la requête pour les activités gratuites
-    $free_activity = $pdo->prepare("SELECT activity_id, activity_url, activity_title, long_description FROM activities WHERE category = 0");
-    $free_activity->execute();
-    $activities_2 = $free_activity->fetchAll(PDO::FETCH_ASSOC);
+    //préparer et executer la requête pour les boissons
+    $boissons = $pdo->prepare("SELECT delice_id, delice_url, category_type, delice_items FROM delices WHERE delice_type = 1");
+    $boissons->execute();
+    $delices_2 = $boissons->fetchAll(PDO::FETCH_ASSOC);
 }
 else
 {
@@ -40,7 +40,7 @@ else
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des activités</title>
+    <title>Gestion des délices</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -51,19 +51,19 @@ else
 
 <main>
     
-    <h1>Gestion des activités</h1>
+    <h1>Gestion des délices</h1>
 
     <section class="paid_activity">
-        <h2>Activités payantes</h2>
+        <h2>Plats</h2>
 
-        <?php foreach($activities_1 as $activity_1) : ?>
+        <?php foreach($delices_1 as $delice_1) : ?>
             <article class="card">
-                <img src="../<?= htmlspecialchars($activity_1['activity_url']) ?>" alt="activité">
+                <img src="../<?= htmlspecialchars($delice_1['delice_url']) ?>" alt="délice">
                 <div class="card_description">
-                    <h3><?= htmlspecialchars($activity_1['activity_title']) ?></h3>
-                    <p><?= htmlspecialchars($activity_1['long_description']) ?></p>
-                    <h4><?= htmlspecialchars($activity_1['activity_price']) ?>$</h4>
-                    <a href="delete_activity.php?id=<?= $activity_1['activity_id'] ?>">
+                    <h3><?= htmlspecialchars($delice_1['category_type']) ?></h3>
+                    <p><?= htmlspecialchars($delice_1['delice_items']) ?></p>
+                    <h4></h4>
+                    <a href="delete_delice.php?id=<?= $delice_1['delice_id'] ?>">
                         <button class="delete_btn">Supprimer</button>
                     </a>
                 </div>
@@ -71,25 +71,28 @@ else
         <?php endforeach; ?>
     </section>
 
-    <section class="free_activity">
-        <h2>Activités gratuites</h2>
+    <section class="paid_activity">
+        <h2>Boissons</h2>
 
-        <?php foreach($activities_2 as $activity_2) : ?>
+        <?php foreach($delices_2 as $delice_2) : ?>
             <article class="card">
-                <img src="../<?= htmlspecialchars($activity_2['activity_url']) ?>" alt="activité">
+                <img src="../<?= htmlspecialchars($delice_2['delice_url']) ?>" alt="délice">
                 <div class="card_description">
-                    <h3><?= htmlspecialchars($activity_2['activity_title']) ?></h3>
-                    <p><?= htmlspecialchars($activity_2['long_description']) ?></p>
-                    <a href="delete_activity.php?id=<?= $activity_2['activity_id'] ?>">
+                    <h3><?= htmlspecialchars($delice_2['category_type']) ?></h3>
+                    <p><?= htmlspecialchars($delice_2['delice_items']) ?></p>
+                    <h4></h4>
+                    <a href="delete_delice.php?id=<?= $delice_2['delice_id'] ?>">
                         <button class="delete_btn">Supprimer</button>
                     </a>
                 </div>
             </article>
         <?php endforeach; ?>
     </section>
+
+    
 
     <div class="add_activity_container">
-        <a href="add_activity.php"><button class="add_activity_btn">Ajouter une activité</button></a>
+        <a href="add_delice.php"><button class="add_activity_btn">Ajouter une catégorie</button></a>
     </div>
 
 </main>

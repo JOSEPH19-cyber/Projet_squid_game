@@ -88,34 +88,59 @@ if (is_admin())
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter une activité</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Ajouter une activité</h1>
+    <section class="auth-container">
 
-    <form action="" method="post">
-        <label for="title">Nom de l’activité :</label><br>
-        <input type="text" name="title" id="title" required><br>
+        <h1>Ajouter une activité</h1>
 
-        <label for="long_description">Longue description :</label><br>
-        <textarea name="long_description" id="long_description" required></textarea><br>
+        <form action="" method="post">
 
-        <label for="short_description">Courte description :</label><br>
-        <textarea name="short_description" id="short_description" required></textarea><br>
+            <fieldset>
 
-        <label for="price">Prix :</label><br>
-        <input type="number" name="price" id="price" min="0" step="0.01"><br>
+                <legend>Insertion</legend>
+                
+                <div class="form-group">
+                    <label for="title">Nom de l’activité :</label><br>
+                    <input type="text" name="title" id="title" required><br>
+                </div>
 
-        <label for="image">Image URL :</label><br>
-        <input type="text" name="url" id="image" required><br>
+                <div class="form-group">
+                    <label for="long_description">Longue description :</label><br>
+                    <textarea name="long_description" id="long_description" required></textarea><br>
+                </div>
 
-        <label for="category">Catégorie :</label><br>
-        <select name="category" id="category" required>
-            <option value="1">Payante</option>
-            <option value="0">Gratuite</option>
-        </select><br>
+                <div class="form-group">
+                    <label for="short_description">Courte description :</label><br>
+                    <textarea name="short_description" id="short_description" required></textarea><br>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Prix :</label><br>
+                    <input type="number" name="price" id="price" min="0" step="0.01"><br>
+                </div>
 
-        <button type="submit" name="submit">Ajouter l’activité</button>
-    </form>
+                <div class="form-group">
+                    <label for="image">Image URL :</label><br>
+                    <input type="text" name="url" id="image" required><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Catégorie :</label><br>
+                    <select name="category" id="category" required>
+                        <option value="1">Payante</option>
+                        <option value="0">Gratuite</option>
+                    </select><br>
+                </div>
+
+                <button type="submit" name="submit">Ajouter l’activité</button>
+            </fieldset>
+            
+        </form>
+    </section>
 
 </body>
 </html>
