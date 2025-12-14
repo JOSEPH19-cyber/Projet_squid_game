@@ -15,26 +15,26 @@
         <!-- Menu principal -->
         <nav class="navbar">
             <ul>
-                <li><a href="../squid_game/index.php" target="_blank">Accueil</a></li>
-                <li><a href="../squid_game/activites.php" target="_blank">Activités</a></li>
-                <li><a href="../squid_game/delices.php" target="_blank">Délices</a></li>
-                <li><a href="../squid_game/reservation.php" target="_blank">Réservation</a></li>
-                <li><a href="../squid_game/contact.php" target="_blank">Contact</a></li>
+                <li><a href="../squid_game/index.php" >Accueil</a></li>
+                <li><a href="../squid_game/activites.php" >Activités</a></li>
+                <li><a href="../squid_game/delices.php" >Délices</a></li>
+                <li><a href="../squid_game/reservation.php" >Réservation</a></li>
+                <li><a href="../squid_game/contact.php" >Contact</a></li>
             </ul>
         </nav>
 
         <!-- Icônes rapides -->
         <div class="header-icons">
             <!-- Voir réservations -->
-            <a href="../squid_game/reservations.php" aria-label="Mes réservations" title="Mes réservations" target="_blank">
+            <a href="../squid_game/reservations.php" aria-label="Mes réservations" title="Mes réservations" >
                 <i class="fas fa-calendar-check"></i>
             </a>
             <!-- Icône de connexion -->
-            <a href="../connexion_inscription/connexion.php" aria-label="Mon compte" title="Se connecter" target="_blank">
+            <a href="../connexion_inscription/connexion.php" aria-label="Mon compte" title="Se connecter" >
                 <i class="fas fa-user"></i>
             </a>
             <!-- Icône de déconnexion -->
-            <a href="../connexion_inscription/deconnexion.php" title="Se déconnecter" target="_blank">
+            <a href="../connexion_inscription/deconnexion.php" title="Se déconnecter" >
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </div>
@@ -52,15 +52,15 @@
             <!-- Liste des liens dans le menu hamburger-->
             <nav class="navlist">
                 <ul>
-                    <li><a href="../squid_game/index.php" target="_blank">Accueil</a></li>
-                    <li><a href="../squid_game/activites.php" target="_blank">Activités</a></li>
-                    <li><a href="../squid_game/delices.php" target="_blank">Délices</a></li>
-                    <li><a href="../squid_game/reservation.php" target="_blank">Réservation</a></li>
-                    <li><a href="../squid_game/reservations.php" target="_blank">Mes réservations</a></li>
-                    <li><a href="../squid_game/contact.php" target="_blank">Contact</a></li>
-                    <li><a href="../connexion_inscription/connexion.php" target="_blank">Connexion</a></li>
-                    <li><a href="../connexion_inscription/inscription.php" target="_blank">Inscription</a></li>
-                    <li><a href="../connexion_inscription/deconnexion.php" target="_blank">Deconnexion</a></li>
+                    <li><a href="../squid_game/index.php" >Accueil</a></li>
+                    <li><a href="../squid_game/activites.php" >Activités</a></li>
+                    <li><a href="../squid_game/delices.php" >Délices</a></li>
+                    <li><a href="../squid_game/reservation.php" >Réservation</a></li>
+                    <li><a href="../squid_game/reservations.php" >Mes réservations</a></li>
+                    <li><a href="../squid_game/contact.php" >Contact</a></li>
+                    <li><a href="../connexion_inscription/connexion.php" >Connexion</a></li>
+                    <li><a href="../connexion_inscription/inscription.php">Inscription</a></li>
+                    <li><a href="../connexion_inscription/deconnexion.php" >Deconnexion</a></li>
                 </ul>
             </nav>
 

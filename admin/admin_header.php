@@ -12,12 +12,12 @@
         <!-- Menu principal -->
         <nav class="navbar">
             <ul>
-                <li><a href="dashboard.php" target="_blank">Accueil</a></li>
-                <li><a href="admin_activities.php" target="_blank">Activités</a></li>
-                <li><a href="admin_delices.php" target="_blank">Délices</a></li>
-                <li><a href="admin_reservation.php" target="_blank">Réservation</a></li>
-                <li><a href="messages.php" target="_blank">Messages</a></li>
-                <li><a href="settings.php" target="_blank">Paramètres</a></li>
+                <li><a href="dashboard.php" >Accueil</a></li>
+                <li><a href="admin_activities.php" >Activités</a></li>
+                <li><a href="admin_delices.php" >Délices</a></li>
+                <li><a href="admin_reservation.php" >Réservation</a></li>
+                <li><a href="messages.php" >Messages</a></li>
+                <li><a href="settings.php">Paramètres</a></li>
             </ul>
         </nav>
 
@@ -35,12 +35,12 @@
             <!-- Liste des liens dans le menu hamburger-->
             <nav class="navlist">
                 <ul>
-                    <li><a href="dashboard.php" target="_blank">Accueil</a></li>
-                    <li><a href="admin_activities.php" target="_blank">Activités</a></li>
-                    <li><a href="" target="_blank">Délices</a></li>
-                    <li><a href="admin_reservation.php" target="_blank">Réservation</a></li>
-                    <li><a href="messages.php" target="_blank">Messages</a></li>
-                    <li><a href="settings.php" target="_blank">Paramètres</a></li>
+                    <li><a href="dashboard.php" >Accueil</a></li>
+                    <li><a href="admin_activities.php" >Activités</a></li>
+                    <li><a href="admin_delices.php" >Délices</a></li>
+                    <li><a href="admin_reservation.php">Réservation</a></li>
+                    <li><a href="messages.php" >Messages</a></li>
+                    <li><a href="settings.php" >Paramètres</a></li>
                 </ul>
             </nav>
 

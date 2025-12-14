@@ -23,7 +23,7 @@ else
 {
     echo "<script>
             alert(\"Vous n'êtes pas connecté. Veuillez vous connecter pour acceder à cette page.\");
-            window.location.href = '../connexion_inscription/connexion.php';
+            window.location.href = '../connexion_inscription/connexion.php');
           </script>";
 }
 ?>

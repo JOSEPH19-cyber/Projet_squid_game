@@ -16,8 +16,8 @@ function openMenu() {
     overlay.classList.add("active");
 
     // Gestion des icônes
-    hamburgerOpen.style.display = "none";   // Cache l'icône hamburger
-    hamburgerClose.style.display = "block"; // Affiche l'icône close
+    hamburgerOpen.style.display = "none";   
+    hamburgerClose.style.display = "block"; 
 }
 
 function closeMenu() {
@@ -25,8 +25,8 @@ function closeMenu() {
     overlay.classList.remove("active");
 
     // Gestion des icônes
-    hamburgerOpen.style.display = "block";  // Réaffiche l'icône hamburger
-    hamburgerClose.style.display = "none";  // Cache l'icône close
+    hamburgerOpen.style.display = "block";  
+    hamburgerClose.style.display = "none";  
 }
 
 // -----------------------------

@@ -180,7 +180,7 @@ carousels.forEach(carousel => {
     const nextBtn = carousel.parentElement.querySelector(".carousel-btn.next");
 
     const cardWidth = carousel.querySelector("article")?.offsetWidth || 300;
-    const gap = 16; // ajuster selon le CSS
+    const gap = 16; 
 
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener("click", () => {
@@ -192,4 +192,3 @@ carousels.forEach(carousel => {
         });
     }
 });
-a
